@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm } from "../modules/auth";
 
-const Login = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const { form } = useSelector(({ auth }) => ({ form: auth.login }));
   const { value, name } = useSelector(({ auth }) => ({
@@ -31,16 +31,15 @@ const Login = () => {
     e.preventDefault();
   };
   useEffect(() => {
-    dispatch(initializeForm("login"));
+    dispatch(initializeForm("register"));
   }, [dispatch]);
-
   return (
     <Responsive>
-      <Header content={"로그인"} />
+      <Header content={"회원가입"} />
       <LoginLogo src="img/story2.png" />
       <SpaceDiv />
       <LoginForm
-        type={true}
+        type={false}
         form={form}
         onChange={onChange}
         onSubmit={onSubmit}
@@ -50,4 +49,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -28,7 +28,7 @@ export const Rectangle3 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   border-radius: 1vh;
 `;
 

@@ -21,7 +21,7 @@ export const Input = styled.input`
   padding: 10px;
   margin-bottom: 10px;
   height: 2vh;
-  width: 85%;
+  width: 75%;
   border-radius: 5px;
   background-color: lightgray;
   border: none;
@@ -29,8 +29,9 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   background-color: rgba(26, 227, 204, 1);
-  width: 90%;
+  width: 80%;
   border: none;
+  border-radius: 15px;
   cursor: pointer;
   height: 5vh;
   margin-top: 5px;
