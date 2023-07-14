@@ -5,6 +5,8 @@ export const Responsive = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: white;
   @media (min-width: 480px) {
     width: 480px;
   }

@@ -15,10 +15,11 @@ export const Rectangle23 = styled.div`
 export const TextContainer = styled.div`
   color: rgba(0, 0, 0, 1);
   font-size: 40px;
+  margin-bottom: 30px;
 `;
 
 export const Rectangle3 = styled.div`
-  :hover {
+  &:hover {
     background-color: rgba(26, 255, 220, 1);
   }
   background-color: rgba(26, 227, 204, 1);
