@@ -1,5 +1,5 @@
 import { produce } from "immer";
-import { createAction, handleAction, handleActions } from "redux-actions";
+import { createAction, handleActions } from "redux-actions";
 
 const CHANGE_FIELD = "auth/CHANGE_FIELD";
 const INITIALIZE_FORM = "auth/INITIALIZE_FORM";

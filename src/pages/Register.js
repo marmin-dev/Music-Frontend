@@ -12,15 +12,13 @@ import { changeField, initializeForm } from "../modules/auth";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({ form: auth.login }));
-  const { value, name } = useSelector(({ auth }) => ({
-    form: auth.login,
-  }));
+  const { form } = useSelector(({ auth }) => ({ form: auth.register }));
+
   const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(
       changeField({
-        form: "login",
+        form: "register",
         key: name,
         value,
       })
