@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <NavDiv>
       <NavItem>
-        <STLink>
+        <STLink to={"/stores"}>
           <NavImg src="img/home.png" />
         </STLink>
       </NavItem>

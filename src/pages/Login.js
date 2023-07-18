@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Responsive } from "../components/Responsive";
 import Navbar from "../components/common/Navbar";
 import Header from "../components/common/HeadBar";
@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm, login } from "../modules/auth";
 
 const Login = () => {
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const { form, auth, authError } = useSelector(({ auth }) => ({
     form: auth.login,
@@ -32,6 +34,10 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { userId, password } = form;
+    if ([userId, password].includes("")) {
+      setError("빈 칸을 모두 입력하세요");
+      return;
+    }
     dispatch(login({ userId, password }));
   };
   // 렌더링시 초기화
@@ -43,6 +49,7 @@ const Login = () => {
     if (authError) {
       console.log("오류발생");
       console.log(authError);
+      setError("에러발생");
     }
     if (auth) {
       console.log("로그인 성공");
@@ -63,6 +70,7 @@ const Login = () => {
         form={form}
         onChange={onChange}
         onSubmit={onSubmit}
+        error={error}
       />
       <Navbar />
     </Responsive>

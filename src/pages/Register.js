@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Responsive } from "../components/Responsive";
 import Navbar from "../components/common/Navbar";
 import Header from "../components/common/HeadBar";
@@ -12,6 +12,8 @@ import { changeField, initializeForm, register } from "../modules/auth";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const [error, setError] = useState("");
+
   const { form, auth, authError } = useSelector(({ auth }) => ({
     form: auth.register,
     auth: auth.auth,
@@ -32,7 +34,12 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { username, userId, password, password2 } = form;
+    if ([userId, password].includes("")) {
+      setError("빈 칸을 모두 입력하세요");
+      return;
+    }
     if (password !== password2) {
+      setError("비밀번호가 일치하지 않습니다");
       return;
     }
     dispatch(register({ username, userId, password }));
@@ -47,6 +54,7 @@ const Register = () => {
     if (authError) {
       console.log("오류발생");
       console.log(authError);
+      setError("오류발생");
       return;
     }
     if (auth) {
@@ -64,6 +72,7 @@ const Register = () => {
         form={form}
         onChange={onChange}
         onSubmit={onSubmit}
+        error={error}
       />
       <Navbar />
     </Responsive>

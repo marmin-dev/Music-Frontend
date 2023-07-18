@@ -32,7 +32,7 @@ const Home = () => {
         <Rectangle23 />
         <Rectangle3>
           <StartText>
-            <StartLink>
+            <StartLink to={"/stores"}>
               <span>네 지금 바로 시작해요 🙌</span>
             </StartLink>
           </StartText>

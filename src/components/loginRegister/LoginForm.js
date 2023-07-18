@@ -1,6 +1,7 @@
+import { ErrorMessage } from "../common/Messages";
 import { Button, Input, LoginDiv, RegisterLink, Form } from "./LoginComponents";
 
-const LoginForm = ({ type, form, onChange, onSubmit }) => {
+const LoginForm = ({ type, form, onChange, onSubmit, error }) => {
   return (
     <LoginDiv>
       <Form onSubmit={onSubmit}>
@@ -36,6 +37,7 @@ const LoginForm = ({ type, form, onChange, onSubmit }) => {
             name="password2"
           />
         )}
+        {error !== "" ? <ErrorMessage>{error}</ErrorMessage> : null}
         {type ? (
           <RegisterLink to={"/register"}>회원이아니신가요?</RegisterLink>
         ) : (
