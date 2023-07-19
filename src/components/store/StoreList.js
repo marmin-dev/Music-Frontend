@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import StoreListItem from "./StoreListItem";
-import { ListDiv } from "./StoreStyle";
+import { BodyDiv } from "../common/Divs";
 import { useDispatch, useSelector } from "react-redux";
 import { getStoreList, increasePage } from "../../modules/store";
 
@@ -33,11 +33,11 @@ const StoreList = () => {
   }, []);
 
   return (
-    <ListDiv ref={containerRef} onScroll={handleScroll}>
+    <BodyDiv ref={containerRef} onScroll={handleScroll}>
       {stores.map((store) => (
-        <StoreListItem store={store} key={store.id} />
+        <StoreListItem store={store} key={store} />
       ))}
-    </ListDiv>
+    </BodyDiv>
   );
 };
 

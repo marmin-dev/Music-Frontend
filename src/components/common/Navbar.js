@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
@@ -26,6 +27,8 @@ const STLink = styled(Link)`
 `;
 
 const Navbar = () => {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
   return (
     <NavDiv>
       <NavItem>
@@ -49,9 +52,15 @@ const Navbar = () => {
         </STLink>
       </NavItem>
       <NavItem>
-        <STLink>
-          <NavImg src="img/user.png" />
-        </STLink>
+        {token || token !== null ? (
+          <STLink to={"/mypage"}>
+            <NavImg src="img/user.png" />
+          </STLink>
+        ) : (
+          <STLink to={"/login"}>
+            <NavImg src="img/user.png" />
+          </STLink>
+        )}
       </NavItem>
     </NavDiv>
   );

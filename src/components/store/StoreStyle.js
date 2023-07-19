@@ -9,12 +9,6 @@ export const ItemDiv = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 
-export const ListDiv = styled.div`
-  height: 80%;
-  width: 100%;
-  overflow-y: scroll;
-`;
-
 export const ItemImg = styled.img`
   width: 70%;
   display: flex;
