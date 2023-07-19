@@ -1,4 +1,3 @@
-import axios from "axios";
 import client from "./client";
 
 // 로그인 API 호출

@@ -53,6 +53,7 @@ const Login = () => {
     }
     if (auth) {
       console.log("로그인 성공");
+      console.log(auth);
       localStorage.setItem("token", auth.body.token);
       localStorage.setItem("username", auth.body.username);
       localStorage.setItem("userId", auth.body.id);

@@ -12,6 +12,7 @@ export const ItemDiv = styled.div`
 export const ListDiv = styled.div`
   height: 80%;
   width: 100%;
+  overflow-y: scroll;
 `;
 
 export const ItemImg = styled.img`
