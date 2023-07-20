@@ -1,7 +1,10 @@
-import { handleActions } from "redux-actions";
-import { createRequestActionTypes } from "../lib/createRequestSaga";
-import { getStoreListByPage } from "../api/store";
+import { createAction, handleActions } from "redux-actions";
+import createRequestSaga, {
+  createRequestActionTypes,
+} from "../lib/createRequestSaga";
+import { getStoreListByPage, createStore } from "../api/store";
 import { call, put, takeLatest } from "redux-saga/effects";
+import { produce } from "immer";
 
 // 액션 타입 정의
 const [GET_STORE_LIST, GET_STORE_LIST_SUCCESS, GET_STORE_LIST_FAILURE] =
@@ -9,6 +12,11 @@ const [GET_STORE_LIST, GET_STORE_LIST_SUCCESS, GET_STORE_LIST_FAILURE] =
 const INCREASE_PAGE = "store/INCREASE_PAGE";
 const INITIALIZE_PAGE = "store/INITIALIZE_PAGE";
 
+const [CREATE_STORE, CREATE_STORE_SUCCESS, CREATE_STORE_FAILURE] =
+  createRequestActionTypes("store/CREATE_STORE");
+const CHANGE_FIELD = "store/CHANGE_FIELD";
+const INITIALIZE_FORM = "store/INITIALIZE_FORM";
+// ------------------------------------------------------
 // 액션 생성
 export const getStoreList = (page) => ({
   type: GET_STORE_LIST,
@@ -21,7 +29,26 @@ export const initializePage = () => ({
   type: INITIALIZE_PAGE,
 });
 
+export const changeStoreField = createAction(
+  CHANGE_FIELD,
+  ({ form, key, value }) => ({
+    form,
+    key,
+    value,
+  })
+);
+export const initializeForm = createAction(INITIALIZE_FORM, (form) => form);
+
+export const postStore = createAction(
+  CREATE_STORE,
+  ({ storeName, userId }) => ({
+    storeName,
+    userId,
+  })
+);
+
 // 사가 생성
+// -----------------------------------------------------------
 export function* getStoreListSaga(action) {
   try {
     const stores = yield call(getStoreListByPage, action.payload);
@@ -38,15 +65,22 @@ export function* getStoreListSaga(action) {
   }
 }
 
+const createStoreSaga = createRequestSaga(CREATE_STORE, createStore);
+
 export function* storeSaga() {
   yield takeLatest(GET_STORE_LIST, getStoreListSaga);
+  yield takeLatest(CREATE_STORE, createStoreSaga);
 }
-
+// --------------------------------------------------------
 const initialState = {
   page: 0,
   stores: [],
+  createStore: {
+    userId: Number(localStorage.getItem("userId")),
+    storeName: "",
+  },
 };
-
+// ---------------------------------------------------------
 const store = handleActions(
   {
     [INCREASE_PAGE]: (state) => ({
@@ -61,6 +95,24 @@ const store = handleActions(
     [GET_STORE_LIST_SUCCESS]: (state, { payload: stores }) => ({
       ...state,
       stores: [...state.stores, ...stores],
+    }),
+    [CHANGE_FIELD]: (state, { payload: { key, value } }) =>
+      produce(state, (draft) => {
+        draft["createStore"][key] = value;
+      }),
+    [INITIALIZE_FORM]: (state, { payload: createStore }) => ({
+      ...state,
+      [createStore]: initialState[createStore],
+      createError: null,
+    }),
+    [CREATE_STORE_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      createError: error,
+    }),
+    [CREATE_STORE_SUCCESS]: (state, { payload: create }) => ({
+      ...state,
+      createError: null,
+      create,
     }),
   },
   initialState

@@ -7,7 +7,7 @@ const LoginForm = ({ type, form, onChange, onSubmit, error }) => {
       <Form onSubmit={onSubmit}>
         {type ? null : (
           <Input
-            type="username"
+            type="text"
             placeholder="닉네임"
             value={form.username}
             onChange={onChange}
