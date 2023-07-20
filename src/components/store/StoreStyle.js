@@ -39,3 +39,7 @@ export const ItemDesc = styled.p`
   color: black;
   margin: 0px;
 `;
+export const StoreH2 = styled.h2`
+  margin: 20px;
+`;
+export const StoreInput = styled.input``;

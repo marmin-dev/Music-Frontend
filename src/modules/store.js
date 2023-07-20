@@ -1,7 +1,5 @@
 import { handleActions } from "redux-actions";
-import createRequestSaga, {
-  createRequestActionTypes,
-} from "../lib/createRequestSaga";
+import { createRequestActionTypes } from "../lib/createRequestSaga";
 import { getStoreListByPage } from "../api/store";
 import { call, put, takeLatest } from "redux-saga/effects";
 
@@ -57,6 +55,7 @@ const store = handleActions(
     }),
     [INITIALIZE_PAGE]: (state) => ({
       ...state,
+      stores: [],
       page: 0,
     }),
     [GET_STORE_LIST_SUCCESS]: (state, { payload: stores }) => ({

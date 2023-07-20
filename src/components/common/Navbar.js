@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import homeImg from "../../img/home.png";
+import searchImg from "../../img/search.png";
+import writeImg from "../../img/write.png";
+import playImg from "../../img/play.png";
+import userImg from "../../img/user.png";
 
 const NavDiv = styled.div`
   display: flex;
@@ -33,32 +38,32 @@ const Navbar = () => {
     <NavDiv>
       <NavItem>
         <STLink to={"/stores"}>
-          <NavImg src="img/home.png" />
+          <NavImg src={homeImg} />
         </STLink>
       </NavItem>
       <NavItem>
         <STLink>
-          <NavImg src="img/search.png" />
+          <NavImg src={searchImg} />
         </STLink>
       </NavItem>
       <NavItem>
         <STLink>
-          <NavImg src="img/write.png" />
+          <NavImg src={writeImg} />
         </STLink>
       </NavItem>
       <NavItem>
         <STLink>
-          <NavImg src="img/play.png" />
+          <NavImg src={playImg} />
         </STLink>
       </NavItem>
       <NavItem>
         {token || token !== null ? (
           <STLink to={"/mypage"}>
-            <NavImg src="img/user.png" />
+            <NavImg src={userImg} />
           </STLink>
         ) : (
           <STLink to={"/login"}>
-            <NavImg src="img/user.png" />
+            <NavImg src={userImg} />
           </STLink>
         )}
       </NavItem>

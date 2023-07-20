@@ -11,7 +11,6 @@ const Account = () => {
     <Responsive>
       <Header content={username + "님의 계정"} />
       <UserNameH2>{username}</UserNameH2>
-
       <Navbar />
     </Responsive>
   );

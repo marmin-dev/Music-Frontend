@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 import StoreListItem from "./StoreListItem";
 import { BodyDiv } from "../common/Divs";
 import { useDispatch, useSelector } from "react-redux";
-import { getStoreList, increasePage } from "../../modules/store";
+import {
+  getStoreList,
+  increasePage,
+  initializePage,
+} from "../../modules/store";
 
 const StoreList = () => {
   const dispatch = useDispatch();
@@ -29,6 +33,7 @@ const StoreList = () => {
   }, [page, dispatch]);
 
   useEffect(() => {
+    dispatch(initializePage());
     console.log(stores);
   }, []);
 

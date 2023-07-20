@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
 import Register from "./pages/Register";
 import StoreListPage from "./pages/StoreListPage";
 import MyPage from "./pages/MyPage";
 import MyDj from "./pages/MyDj";
 import Account from "./pages/Account";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import PostStore from "./pages/PostStore";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
       <Route path="/mydj" element={<MyDj />} />
       {/* 내 계정 페이지 */}
       <Route path="/account" element={<Account />} />
+      {/* 새 DJ부스 생성 */}
+      <Route path="/store/create" element={<PostStore />} />
     </Routes>
   );
 }

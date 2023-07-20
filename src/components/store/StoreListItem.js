@@ -6,12 +6,13 @@ import {
   ItemLink,
   ItemTextDiv,
 } from "./StoreStyle";
+import storeImg from "../../img/store.png";
 
 const StoreListItem = ({ store }) => {
   return (
     <ItemDiv>
       <ImgDiv>
-        <ItemImg src="/img/store.png" />
+        <ItemImg src={storeImg} />
       </ImgDiv>
       <ItemTextDiv>
         <ItemLink>{store.storeName}</ItemLink>
