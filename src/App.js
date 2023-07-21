@@ -8,6 +8,7 @@ import Account from "./pages/Account";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PostStore from "./pages/PostStore";
+import StoreDetail from "./pages/StoreDetail";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
       <Route path="/account" element={<Account />} />
       {/* 새 DJ부스 생성 */}
       <Route path="/store/create" element={<PostStore />} />
+      {/* DJ 뷰 디테일 뷰 */}
+      <Route path="/store/:id" element={<StoreDetail />} />
     </Routes>
   );
 }

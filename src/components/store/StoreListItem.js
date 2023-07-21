@@ -15,7 +15,7 @@ const StoreListItem = ({ store }) => {
         <ItemImg src={storeImg} />
       </ImgDiv>
       <ItemTextDiv>
-        <ItemLink>{store.storeName}</ItemLink>
+        <ItemLink to={`/store/${store.id}`}>{store.storeName}</ItemLink>
         <ItemDesc>{store.username}</ItemDesc>
       </ItemTextDiv>
     </ItemDiv>

@@ -23,7 +23,7 @@ const StoreList = () => {
       // console.log(page + 1 * 30);
 
       if (stores.length == page + 1 * 30) {
-        console.log(stores.length);
+        // console.log(stores.length);
         dispatch(increasePage());
       }
     }
@@ -33,11 +33,11 @@ const StoreList = () => {
     // 페이지가 증가할 때마다 데이터를 추가로 불러옵니다.
     // console.log(page);
     const fetchData = async () => {
-      console.log(page);
+      // console.log(page);
       await dispatch(getStoreList(page));
     };
     fetchData();
-    console.log(stores);
+    // console.log(stores);
   }, [page, dispatch]);
 
   useEffect(() => {

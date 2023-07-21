@@ -46,7 +46,7 @@ export const MyPage = () => {
           <ModalBtn onClick={() => setModal(false)}>취소</ModalBtn>
         </UserDeleteModal>
       ) : null}
-      <Navbar />
+      <Navbar to={"/store/create"} />
     </Responsive>
   );
 };

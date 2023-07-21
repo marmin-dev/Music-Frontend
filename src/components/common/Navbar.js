@@ -31,7 +31,7 @@ const STLink = styled(Link)`
   align-items: center;
 `;
 
-const Navbar = () => {
+const Navbar = ({ to }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
         </STLink>
       </NavItem>
       <NavItem>
-        <STLink>
+        <STLink to={to}>
           <NavImg src={writeImg} />
         </STLink>
       </NavItem>

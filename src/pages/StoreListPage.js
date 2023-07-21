@@ -9,7 +9,7 @@ const StoreListPage = () => {
     <Responsive>
       <HeaderPlus content={"가게목록"} />
       <StoreList />
-      <Navbar />
+      <Navbar to={"/store/create"} />
     </Responsive>
   );
 };

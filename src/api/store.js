@@ -44,3 +44,10 @@ export const createStore = async ({ userId, storeName }) => {
       return { data: "data" };
     });
 };
+
+export const getStoreDetail = async (id) => {
+  const response = axios.get(
+    `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/store/detail/${id}`
+  );
+  return response;
+};
