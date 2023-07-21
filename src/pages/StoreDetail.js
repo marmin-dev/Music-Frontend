@@ -4,10 +4,12 @@ import Header from "../components/common/HeadBar";
 import Navbar from "../components/common/Navbar";
 import { getStoreDetail } from "../api/store";
 import { useParams } from "react-router-dom";
+import StoreDetailDiv from "../components/store/StoreDetailDiv";
 
 const StoreDetail = () => {
   const id = useParams("id");
   const [storeName, setStoreName] = useState("Loadiing...");
+  const token = localStorage.getItem("SPOTIFY");
   useEffect(() => {
     // console.log(id);
     const fetch = async () => {
@@ -20,6 +22,7 @@ const StoreDetail = () => {
   return (
     <Responsive>
       <Header content={storeName} />
+      <StoreDetailDiv id={id.id} token={token} />
       <Navbar />
     </Responsive>
   );

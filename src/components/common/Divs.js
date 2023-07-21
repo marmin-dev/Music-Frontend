@@ -13,3 +13,11 @@ export const SBodyDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const DetailBodyDiv = styled.div`
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
