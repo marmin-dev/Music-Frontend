@@ -43,3 +43,16 @@ export const StoreH2 = styled.h2`
   margin: 20px;
 `;
 export const StoreInput = styled.input``;
+
+export const SpotifyDiv = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+export const SpotifyLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

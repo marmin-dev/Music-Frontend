@@ -18,6 +18,7 @@ export const BackButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  width: 10%;
   z-index: 1;
 `;
 
@@ -34,7 +35,7 @@ export const Title = styled.h1`
 `;
 
 export const BackImg = styled.img`
-  width: 30%;
+  width: 70%;
 `;
 
 export const Header = ({ content }) => {

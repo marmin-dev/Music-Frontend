@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import { DetailBodyDiv } from "../common/Divs";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
-import { Link } from "react-router-dom";
+import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
 
-const StoreDetailDiv = ({ token, id }) => {
-  const spotifyToken = token;
+const SpotifyPlay = ({ token, id, playList }) => {
+  //   const spotifyToken = token;
   const url = `http://localhost:8888?id=${id}`;
   useEffect(() => console.log(token));
 
   return (
-    <DetailBodyDiv>
+    <SpotifyDiv>
       {token ? (
         <SpotifyPlayer
           token={token}
@@ -26,12 +26,12 @@ const StoreDetailDiv = ({ token, id }) => {
           }}
         />
       ) : (
-        <Link to={url}>
+        <SpotifyLink to={url}>
           <Button>스포티파이 로그인하기</Button>
-        </Link>
+        </SpotifyLink>
       )}
-    </DetailBodyDiv>
+    </SpotifyDiv>
   );
 };
 
-export default StoreDetailDiv;
+export default SpotifyPlay;

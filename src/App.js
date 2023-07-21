@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PostStore from "./pages/PostStore";
 import StoreDetail from "./pages/StoreDetail";
+import PostStory from "./pages/PostStory";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
       <Route path="/store/create" element={<PostStore />} />
       {/* DJ 뷰 디테일 뷰 */}
       <Route path="/store/:id" element={<StoreDetail />} />
+      {/* 사연 작성하기 */}
+      <Route path="/store/create/:id" element={<PostStory />} />
     </Routes>
   );
 }

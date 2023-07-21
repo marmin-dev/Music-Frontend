@@ -9,6 +9,7 @@ import {
 } from "../components/loginRegister/LoginComponents";
 import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm, register } from "../modules/auth";
+import logoImg from "../img/story2.png";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const Register = () => {
   return (
     <Responsive>
       <Header content={"회원가입"} />
-      <LoginLogo src="img/story2.png" />
+      <LoginLogo src={logoImg} />
       <SpaceDiv />
       <LoginForm
         type={false}

@@ -47,9 +47,15 @@ const Navbar = ({ to }) => {
         </STLink>
       </NavItem>
       <NavItem>
-        <STLink to={to}>
-          <NavImg src={writeImg} />
-        </STLink>
+        {token || token !== null ? (
+          <STLink to={to}>
+            <NavImg src={writeImg} />
+          </STLink>
+        ) : (
+          <STLink to={"/login"}>
+            <NavImg src={writeImg} />
+          </STLink>
+        )}
       </NavItem>
       <NavItem>
         <STLink>

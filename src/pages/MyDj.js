@@ -18,13 +18,13 @@ const MyDj = () => {
   }, []);
   return (
     <Responsive>
-      <HeaderPlus content={"내 DJ부스"} />
+      <HeaderPlus content={"내 DJ부스"} type={true} />
       <BodyDiv>
         {items.map((item) => (
           <StoreListItem store={item} key={item.id} />
         ))}
       </BodyDiv>
-      <Navbar />
+      <Navbar to={"/store/create"} />
     </Responsive>
   );
 };
