@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { DetailBodyDiv } from "../common/Divs";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
 import { SpotifyDiv, SpotifyLink } from "./StoreStyle";

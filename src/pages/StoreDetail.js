@@ -44,7 +44,6 @@ const StoreDetail = () => {
       </DetailBodyDiv>
       {modal ? (
         <UserDeleteModal>
-          <ModalP>정말로 탈퇴하시겠습니까?</ModalP>
           <ModalBtn
             onClick={() => (window.location.href = "http://localhost:8888")}
           >

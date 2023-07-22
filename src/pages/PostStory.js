@@ -10,7 +10,7 @@ const PostStory = () => {
     <Responsive>
       <Header content={"사연 작성"} />
       <BodyDiv>
-        <h1>아 슈발 덥다</h1>
+        <h1>스토리 등록 구현예정</h1>
       </BodyDiv>
       <Navbar />
     </Responsive>
