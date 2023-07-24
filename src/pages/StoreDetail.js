@@ -16,6 +16,7 @@ const StoreDetail = () => {
   const token = localStorage.getItem("SPOTIFY");
   const [modal, setModal] = useState(false);
   const [stories, setStories] = useState([]);
+  const [playList, setPlayList] = useState([]);
   // -----------------------------------------------------
   useEffect(() => {
     // console.log(id);
@@ -26,8 +27,10 @@ const StoreDetail = () => {
     const fetchListData = async () => {
       const response = await getStoryList(id.id);
       setStories(response);
+      const newPlayList = response.map((song) => `spotify:track:${song.uri}`);
+      setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
     };
-    console.log();
+
     fetchListData();
     fetch();
   }, []);
@@ -42,7 +45,7 @@ const StoreDetail = () => {
       <HeaderPlus content={storeName} type={false} event={clickMenu} />
 
       <DetailBodyDiv>
-        <SpotifyPlay id={id.id} token={token} />
+        <SpotifyPlay id={id.id} token={token} playList={playList} />
         <div style={{ height: "20px" }} />
         <StoryList stories={stories} loggedIn={token} />
       </DetailBodyDiv>
@@ -56,7 +59,7 @@ const StoreDetail = () => {
           <ModalBtn onClick={() => setModal(false)}>취소</ModalBtn>
         </UserDeleteModal>
       ) : null}
-      <Navbar to={`/store/create/${id.id}`} />
+      <Navbar to={`/story/create/${id.id}`} />
     </Responsive>
   );
 };

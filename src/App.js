@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import PostStore from "./pages/PostStore";
 import StoreDetail from "./pages/StoreDetail";
 import PostStory from "./pages/PostStory";
+import StoryDetail from "./pages/StoryDetail";
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
       {/* DJ 뷰 디테일 뷰 */}
       <Route path="/store/:id" element={<StoreDetail />} />
       {/* 사연 작성하기 */}
-      <Route path="/store/create/:id" element={<PostStory />} />
+      <Route path="/story/create/:id" element={<PostStory />} />
+      {/* 사연 디테일 뷰 */}
+      <Route path="/story/detail/:id" element={<StoryDetail />} />
     </Routes>
   );
 }

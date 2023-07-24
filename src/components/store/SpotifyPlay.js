@@ -2,18 +2,19 @@ import React, { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
 import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
+import SpotifyWebApi from "spotify-web-api-js";
 
 const SpotifyPlay = ({ token, id, playList }) => {
   //   const spotifyToken = token;
   const url = `http://localhost:8888?id=${id}`;
-  useEffect(() => console.log(token));
+  useEffect(() => console.log(playList));
 
   return (
     <SpotifyDiv>
       {token ? (
         <SpotifyPlayer
           token={token}
-          uris={["spotify:album:6Z1zv6Hw9bdvSoxI5uYk2h"]}
+          uris={playList}
           styles={{
             activeColor: "#fff",
             bgColor: "#333",
@@ -32,5 +33,7 @@ const SpotifyPlay = ({ token, id, playList }) => {
     </SpotifyDiv>
   );
 };
+
+export const spotifyApi = new SpotifyWebApi();
 
 export default SpotifyPlay;

@@ -34,3 +34,7 @@ export const ImgDiv2 = styled(ImgDiv)`
 export const ItemTextDiv2 = styled(ItemTextDiv)`
   width: 80%;
 `;
+
+export const PlayListDiv = styled(StoryListItemDiv2)`
+  height: 10%;
+`;

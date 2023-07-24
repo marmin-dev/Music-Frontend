@@ -7,6 +7,8 @@ import {
 } from "./StoryStyle";
 import musicImg from "../../img/music.png";
 import { styled } from "styled-components";
+import { useEffect, useState } from "react";
+import { spotifyApi } from "react-spotify-web-playback";
 
 export const ArtistP = styled.p`
   margin: 0px;
@@ -19,15 +21,29 @@ export const Songp = styled(ArtistP)`
 `;
 
 const StoryListItem = ({ story, loggedIn }) => {
+  const [img, setImg] = useState(musicImg);
+
+  useEffect(() => {
+    if (loggedIn) {
+      spotifyApi.setAccessToken(loggedIn);
+      spotifyApi.getTrack(`${story.uri}`).then((response) => {
+        console.log(response);
+        setImg(response.album.images[0]);
+      });
+    }
+  }, []);
+
   return (
     <>
       {story.content ? (
         <StoryListItemDiv2>
           <ImgDiv2>
-            {loggedIn ? <ItemImg src={musicImg} /> : <ItemImg src={musicImg} />}
+            {loggedIn ? <ItemImg src={img.url} /> : <ItemImg src={musicImg} />}
           </ImgDiv2>
           <ItemTextDiv2>
-            <ItemLink>{story.username}</ItemLink>
+            <ItemLink to={`/story/detail/${story.id}`}>
+              {story.username}
+            </ItemLink>
             <Songp>{story.songName}</Songp>
             <ArtistP>{story.artist}</ArtistP>
           </ItemTextDiv2>
@@ -35,7 +51,7 @@ const StoryListItem = ({ story, loggedIn }) => {
       ) : (
         <StoryListItemDiv>
           <ImgDiv2>
-            {loggedIn ? <ItemImg src={musicImg} /> : <ItemImg src={musicImg} />}
+            {loggedIn ? <ItemImg src={img.url} /> : <ItemImg src={musicImg} />}
           </ImgDiv2>
           <ItemTextDiv2>
             <ItemLink>{story.username}</ItemLink>
