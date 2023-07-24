@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Responsive } from "../components/Responsive";
-import Header from "../components/common/HeadBar";
 import Navbar from "../components/common/Navbar";
 import { getStoreDetail } from "../api/store";
 import { useParams } from "react-router-dom";
-
 import { DetailBodyDiv } from "../components/common/Divs";
 import SpotifyPlay from "../components/store/SpotifyPlay";
-import StoryList from "../components/story/StoryList";
 import HeaderPlus from "../components/common/HeaderPlus";
-import {
-  ModalBtn,
-  ModalP,
-  UserDeleteModal,
-} from "../components/mypage/MyPageStyle";
+import { ModalBtn, UserDeleteModal } from "../components/mypage/MyPageStyle";
+import { getStoryList } from "../api/story";
+import StoryList from "../components/story/StoryList";
 
 const StoreDetail = () => {
   const id = useParams("id");
   const [storeName, setStoreName] = useState("Loadiing...");
   const token = localStorage.getItem("SPOTIFY");
   const [modal, setModal] = useState(false);
+  const [stories, setStories] = useState([]);
   // -----------------------------------------------------
   useEffect(() => {
     // console.log(id);
@@ -27,8 +23,14 @@ const StoreDetail = () => {
       const response = await getStoreDetail(id.id);
       setStoreName(response.data.storeName);
     };
+    const fetchListData = async () => {
+      const response = await getStoryList(id.id);
+      setStories(response);
+    };
+    console.log();
+    fetchListData();
     fetch();
-  });
+  }, []);
 
   const clickMenu = () => {
     setModal(true);
@@ -38,9 +40,11 @@ const StoreDetail = () => {
   return (
     <Responsive>
       <HeaderPlus content={storeName} type={false} event={clickMenu} />
+
       <DetailBodyDiv>
         <SpotifyPlay id={id.id} token={token} />
-        <StoryList />
+        <div style={{ height: "20px" }} />
+        <StoryList stories={stories} loggedIn={token} />
       </DetailBodyDiv>
       {modal ? (
         <UserDeleteModal>

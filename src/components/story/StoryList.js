@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+import StoryListItem from "./StoryListItem";
 import { StoryListDiv } from "./StoryStyle";
 
-const StoryList = () => {
+const StoryList = ({ stories, loggedIn }) => {
+  useEffect(() => {
+    console.log(stories);
+  });
   return (
     <StoryListDiv>
-      <h1>플레이리스트, 사연 리스트 구현예정</h1>
+      {stories.map((story) => (
+        <StoryListItem story={story} loggedIn={loggedIn} key={story.id} />
+      ))}
     </StoryListDiv>
   );
 };
