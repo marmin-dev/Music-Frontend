@@ -9,12 +9,12 @@ import {
   ImgDiv2,
   ItemTextDiv2,
   PlayListDiv,
-  StoryListItemDiv2,
 } from "../components/story/StoryStyle";
 import { ItemImg } from "../components/store/StoreStyle";
 import { ArtistP, Songp } from "../components/story/StoryListItem";
 import musicImg from "../img/music.png";
 import { spotifyApi } from "../api/spotifyApi";
+import StoryComment from "../components/story/StoryComment";
 
 const StoryDetail = () => {
   // -------------------------------------------
@@ -59,6 +59,7 @@ const StoryDetail = () => {
             <ArtistP>{data.artist}</ArtistP>
           </ItemTextDiv2>
         </PlayListDiv>
+        <StoryComment data={data} />
       </DetailBodyDiv>
       <Navbar />
     </Responsive>

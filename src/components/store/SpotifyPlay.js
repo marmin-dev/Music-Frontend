@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
 import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
-import SpotifyWebApi from "spotify-web-api-js";
 
 const SpotifyPlay = ({ token, id, playList }) => {
   //   const spotifyToken = token;
-  const url = `http://localhost:8888?id=${id}`;
+  const url = `http://localhost:8888`;
   useEffect(() => console.log(playList));
 
   return (
@@ -33,7 +32,5 @@ const SpotifyPlay = ({ token, id, playList }) => {
     </SpotifyDiv>
   );
 };
-
-export const spotifyApi = new SpotifyWebApi();
 
 export default SpotifyPlay;

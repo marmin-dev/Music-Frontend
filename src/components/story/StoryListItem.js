@@ -8,7 +8,7 @@ import {
 import musicImg from "../../img/music.png";
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
-import { spotifyApi } from "react-spotify-web-playback";
+import { spotifyApi } from "../../api/spotifyApi";
 
 export const ArtistP = styled.p`
   margin: 0px;
