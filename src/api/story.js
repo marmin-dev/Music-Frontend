@@ -8,8 +8,24 @@ export const getStoryList = async (storeId) => {
   return response.data;
 };
 
-export const createStory = async ({ userId, storeId }) => {
-  await axios.post();
+export const postStory = async ({
+  songName,
+  artist,
+  uri,
+  emotion,
+  content,
+}) => {
+  const userId = localStorage.getItem("userId");
+  const storeId = Number(window.location.pathname.split("/")[3]);
+  await axios
+    .post(
+      `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/store/${userId}/${storeId}`,
+      { songName, artist, uri, emotion, content }
+    )
+    .then((response) => {
+      console.log(response);
+      window.location.href = `/store/${storeId}`;
+    });
 };
 
 export const getStoryDetail = async (storyId) => {

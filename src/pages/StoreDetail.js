@@ -56,6 +56,9 @@ const StoreDetail = () => {
           >
             스포티파이 다시 로그인하기
           </ModalBtn>
+          <ModalBtn onClick={() => window.location.reload()}>
+            리스트 불러오기
+          </ModalBtn>
           <ModalBtn onClick={() => setModal(false)}>취소</ModalBtn>
         </UserDeleteModal>
       ) : null}
