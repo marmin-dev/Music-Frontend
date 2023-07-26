@@ -21,6 +21,7 @@ const PostStory = () => {
     createError: story.createError,
   }));
   const storeId = useParams("id");
+  const [feeling, setFeeling] = useState("");
   // --------------------------------------------------
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -41,38 +42,24 @@ const PostStory = () => {
   useEffect(() => {
     console.log(form);
     dispatch(initializeForm());
-    dispatch(
-      changeStoryField({
-        key: "uri",
-        value: "0V3wPSX9ygBnCm8psDIegu",
-      })
-    );
-    dispatch(
-      changeStoryField({
-        key: "songName",
-        value: "AntiHero",
-      })
-    );
-    dispatch(
-      changeStoryField({
-        key: "artist",
-        value: "Taylor Swift",
-      })
-    );
+    // dispatch(
+    //   changeStoryField({
+    //     key: "username",
+    //     value: localStorage.getItem("username"),
+    //   })
+    // );
+
+    console.log(form);
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(
       changeStoryField({
         key: "emotion",
-        value: "우울함",
+        value: feeling,
       })
     );
-    dispatch(
-      changeStoryField({
-        key: "username",
-        value: localStorage.getItem("username"),
-      })
-    );
-    console.log(form);
-  }, [dispatch]);
+  }, [feeling]);
 
   // --------------------------------------------------
 
@@ -80,7 +67,12 @@ const PostStory = () => {
     <Responsive>
       <Header content={"사연 작성"} />
       <BodyDiv>
-        <StoryInputForm onChange={onChange} onSubmit={onSubmit} />
+        <StoryInputForm
+          onChange={onChange}
+          onSubmit={onSubmit}
+          form={form}
+          setFeeling={setFeeling}
+        />
       </BodyDiv>
       <Navbar />
     </Responsive>

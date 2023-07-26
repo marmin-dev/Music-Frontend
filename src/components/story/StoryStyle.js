@@ -156,3 +156,14 @@ export const ImgDiv3 = styled(ImgDiv2)`
 export const FormUserNameDiv = styled(CommentItemDiv)`
   border-bottom: 1px solid lightgray;
 `;
+
+export const EmotionBtn = styled.button`
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
