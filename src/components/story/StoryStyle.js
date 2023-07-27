@@ -167,3 +167,10 @@ export const EmotionBtn = styled.button`
     cursor: pointer;
   }
 `;
+
+export const TextDiv = styled.div`
+  height: 40%;
+  width: 90%;
+  background-color: lightgrey;
+  overflow-y: scroll;
+`;
