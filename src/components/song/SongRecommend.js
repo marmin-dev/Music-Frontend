@@ -15,7 +15,6 @@ import { ImgDiv } from "../store/StoreStyle";
 import playImg from "../../img/play.png";
 import { spotifyApi } from "../../api/spotifyApi";
 import { useDispatch } from "react-redux";
-import { changeStoreField } from "../../modules/store";
 import { changeStoryField } from "../../modules/story";
 
 function SongRecommend({ emotion, setPage }) {

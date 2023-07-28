@@ -52,7 +52,9 @@ const StoreDetail = () => {
       {modal ? (
         <UserDeleteModal>
           <ModalBtn
-            onClick={() => (window.location.href = "http://localhost:8888")}
+            onClick={() =>
+              (window.location.href = "https://auth.sumsumai.click")
+            }
           >
             스포티파이 다시 로그인하기
           </ModalBtn>

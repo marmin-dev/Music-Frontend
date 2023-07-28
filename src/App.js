@@ -38,7 +38,7 @@ function App() {
       {/* 사연 작성하기 */}
       <Route path="/story/create/:id" element={<PostStory />} />
       {/* 사연 디테일 뷰 */}
-      <Route path="/story/detail/:id" element={<StoryDetail />} />
+      <Route path="/story/detail/:storeid/:id" element={<StoryDetail />} />
       {/* 노래 검색하는 창 */}
       <Route path="/song" element={<SongPage />} />
       {/* 사연없이 노래만 검색하기 */}

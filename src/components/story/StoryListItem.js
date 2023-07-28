@@ -9,6 +9,7 @@ import musicImg from "../../img/music.png";
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import { spotifyApi } from "../../api/spotifyApi";
+import { useParams } from "react-router-dom";
 
 export const ArtistP = styled.p`
   margin: 0px;
@@ -22,7 +23,7 @@ export const Songp = styled(ArtistP)`
 
 const StoryListItem = ({ story, loggedIn }) => {
   const [img, setImg] = useState(musicImg);
-
+  const storeId = useParams("id");
   useEffect(() => {
     if (loggedIn) {
       spotifyApi.setAccessToken(loggedIn);
@@ -41,7 +42,7 @@ const StoryListItem = ({ story, loggedIn }) => {
             {loggedIn ? <ItemImg src={img.url} /> : <ItemImg src={musicImg} />}
           </ImgDiv2>
           <ItemTextDiv2>
-            <ItemLink to={`/story/detail/${story.id}`}>
+            <ItemLink to={`/story/detail/${storeId.id}/${story.id}`}>
               {story.username}
             </ItemLink>
             <Songp>{story.songName}</Songp>

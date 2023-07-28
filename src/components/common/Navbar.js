@@ -59,9 +59,15 @@ const Navbar = ({ to, toSong }) => {
       </NavItem>
       {toSong ? (
         <NavItem>
-          <STLink to={`/song/request/${toSong}`}>
-            <NavImg src={playImg} />
-          </STLink>
+          {token ? (
+            <STLink to={`/song/request/${toSong}`}>
+              <NavImg src={playImg} />
+            </STLink>
+          ) : (
+            <STLink to={`/login`}>
+              <NavImg src={playImg} />
+            </STLink>
+          )}
         </NavItem>
       ) : (
         <NavItem>

@@ -38,6 +38,7 @@ const StoryDetail = () => {
           setImg(track.album.images[0]);
         });
       }
+      console.log(storyId);
     };
     fetch();
   }, []);
@@ -61,7 +62,7 @@ const StoryDetail = () => {
         </PlayListDiv>
         <StoryComment data={data} />
       </DetailBodyDiv>
-      <Navbar />
+      <Navbar to={`/story/create/${storyId.storeid}`} toSong={storyId.id} />
     </Responsive>
   );
 };

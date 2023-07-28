@@ -5,7 +5,7 @@ import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
 
 const SpotifyPlay = ({ token, id, playList }) => {
   //   const spotifyToken = token;
-  const url = `http://localhost:8888`;
+  const url = `https://auth.sumsumai.click`;
   useEffect(() => console.log(playList));
 
   return (

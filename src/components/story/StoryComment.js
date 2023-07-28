@@ -36,10 +36,14 @@ const StoryComment = ({ data }) => {
   }, []);
 
   const click = () => {
-    if (create) {
-      setCreate(false);
+    if (localStorage.getItem("token")) {
+      if (create) {
+        setCreate(false);
+      } else {
+        setCreate(true);
+      }
     } else {
-      setCreate(true);
+      window.location.href = "/login";
     }
   };
 
@@ -47,7 +51,7 @@ const StoryComment = ({ data }) => {
     e.preventDefault();
     await createComment(storyId.id, { userId, content }).then((response) => {
       console.log(response);
-      window.location.href = `/story/detail/${storyId.id}`;
+      window.location.href = `/story/detail/${storyId.storeid}/${storyId.id}`;
     });
   };
 

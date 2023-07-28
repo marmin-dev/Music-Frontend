@@ -47,7 +47,7 @@ function RequestSong() {
   // >>==================================================
   return (
     <Responsive>
-      <Header content={"노래 둘러보기"} />
+      <Header content={"노래 신청하기"} />
       {page === 0 ? (
         <div style={{ height: "80%", width: "100%" }}>
           <SongSearch type={"post"} setPage={setPage} />
@@ -68,7 +68,7 @@ function RequestSong() {
           </SearchDiv>
         </div>
       ) : null}
-      <Navbar />
+      <Navbar to={`/story/create/${storeId.id}`} toSong={storeId.id} />
     </Responsive>
   );
 }

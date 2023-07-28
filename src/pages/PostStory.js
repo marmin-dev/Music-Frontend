@@ -74,7 +74,7 @@ const PostStory = () => {
           setFeeling={setFeeling}
         />
       </BodyDiv>
-      <Navbar />
+      <Navbar to={`/story/create/${storeId.id}`} toSong={storeId.id} />
     </Responsive>
   );
 };
