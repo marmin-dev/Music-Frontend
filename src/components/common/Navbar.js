@@ -31,7 +31,7 @@ const STLink = styled(Link)`
   align-items: center;
 `;
 
-const Navbar = ({ to }) => {
+const Navbar = ({ to, toSong }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   return (
@@ -57,11 +57,19 @@ const Navbar = ({ to }) => {
           </STLink>
         )}
       </NavItem>
-      <NavItem>
-        <STLink>
-          <NavImg src={playImg} />
-        </STLink>
-      </NavItem>
+      {toSong ? (
+        <NavItem>
+          <STLink to={`/song/request/${toSong}`}>
+            <NavImg src={playImg} />
+          </STLink>
+        </NavItem>
+      ) : (
+        <NavItem>
+          <STLink to={`/song`}>
+            <NavImg src={playImg} />
+          </STLink>
+        </NavItem>
+      )}
       <NavItem>
         {token || token !== null ? (
           <STLink to={"/mypage"}>

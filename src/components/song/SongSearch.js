@@ -8,7 +8,6 @@ import {
   SearchListDiv,
   SearchListItemDiv,
   SearchP,
-  SongsDiv,
 } from "./SongStyle";
 import { getPathSearch, getSearch, getSearchByKey } from "../../api/search";
 import SongList from "./SongList";
@@ -41,12 +40,14 @@ function SongSearch({ type, setPage }) {
 
   const searchByKeword = async () => {
     // 키워드로 검색하기
-    const res = await getSearchByKey(search);
-    const res2 = await getPathSearch(search);
-    setModal(false);
-    // console.log(res.data);
-    // console.log(res2);
-    setSongs(res.data);
+    if (search) {
+      const res = await getSearchByKey(search);
+      const res2 = await getPathSearch(search);
+      setModal(false);
+      // console.log(res.data);
+      // console.log(res2);
+      setSongs(res.data);
+    }
   };
 
   // -------------------------------------------
@@ -79,7 +80,7 @@ function SongSearch({ type, setPage }) {
           ))}
         </SearchListDiv>
       ) : null}
-      <SongList songs={songs} type={"post"} setPage={setPage} />
+      <SongList songs={songs} type={type} setPage={setPage} />
     </SearchDiv>
   );
 }

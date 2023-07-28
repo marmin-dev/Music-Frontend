@@ -15,12 +15,14 @@ import { spotifyApi } from "../../api/spotifyApi";
 import { useDispatch } from "react-redux";
 import { changeStoryField } from "../../modules/story";
 
-function SongItem({ song, type, setPage }) {
+function SongItem({ song, type, setPage, storeId }) {
   const [loggedIn, setLoggedIn] = useState("");
   const [img, setImg] = useState("");
+
   const dispatch = useDispatch();
   useEffect(() => {
     setLoggedIn(localStorage.getItem("SPOTIFY"));
+    console.log(storeId);
   }, []);
   useEffect(() => {
     spotifyApi.setAccessToken(loggedIn);
@@ -30,8 +32,7 @@ function SongItem({ song, type, setPage }) {
     });
   }, [loggedIn]);
 
-  const onClick = () => {
-    setPage(4);
+  const onClick = async () => {
     dispatch(
       changeStoryField({
         key: "songName",
@@ -50,6 +51,11 @@ function SongItem({ song, type, setPage }) {
         value: song.uri,
       })
     );
+    if (setPage) {
+      setPage(4);
+    } else {
+      window.location.href = `/song/result/${storeId}`;
+    }
   };
 
   return (

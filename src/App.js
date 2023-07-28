@@ -11,6 +11,8 @@ import PostStore from "./pages/PostStore";
 import StoreDetail from "./pages/StoreDetail";
 import PostStory from "./pages/PostStory";
 import StoryDetail from "./pages/StoryDetail";
+import SongPage from "./pages/SongPage";
+import RequestSong from "./pages/RequestSong";
 
 function App() {
   return (
@@ -37,6 +39,10 @@ function App() {
       <Route path="/story/create/:id" element={<PostStory />} />
       {/* 사연 디테일 뷰 */}
       <Route path="/story/detail/:id" element={<StoryDetail />} />
+      {/* 노래 검색하는 창 */}
+      <Route path="/song" element={<SongPage />} />
+      {/* 사연없이 노래만 검색하기 */}
+      <Route path="/song/request/:id" element={<RequestSong />} />
     </Routes>
   );
 }

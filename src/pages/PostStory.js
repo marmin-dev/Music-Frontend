@@ -13,7 +13,7 @@ import StoryInputForm from "../components/story/StoryInputForm";
 import { useParams } from "react-router-dom";
 
 const PostStory = () => {
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const dispatch = useDispatch();
   const { form, create, createError } = useSelector(({ story }) => ({
     form: story.story,

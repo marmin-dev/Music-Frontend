@@ -16,7 +16,7 @@ export const postStory = async ({
   content,
 }) => {
   const userId = localStorage.getItem("userId");
-  const storeId = Number(window.location.pathname.split("/")[3]);
+  let storeId = Number(window.location.pathname.split("/")[3]);
   await axios
     .post(
       `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/store/${userId}/${storeId}`,
