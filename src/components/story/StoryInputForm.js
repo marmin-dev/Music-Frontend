@@ -12,10 +12,12 @@ import { Button } from "../loginRegister/LoginComponents";
 import { useEffect, useState } from "react";
 import SongSearch from "../song/SongSearch";
 import StoryResultPage from "./StoryResultPage";
+import SongRecommend from "../song/SongRecommend";
 
 function StoryInputForm({ onChange, onSubmit, form, setFeeling }) {
   const username = localStorage.getItem("username");
   const [page, setPage] = useState(0);
+  const [emo, setEmo] = useState("");
   const emotionArr = [
     { emotion: "joy", text: "신남" },
     { emotion: "anger", text: "화남" },
@@ -73,6 +75,7 @@ function StoryInputForm({ onChange, onSubmit, form, setFeeling }) {
             type="button"
             onClick={() => {
               setFeeling("sadness");
+              setEmo("sadness");
               setPage(page + 1);
             }}
           >
@@ -86,6 +89,7 @@ function StoryInputForm({ onChange, onSubmit, form, setFeeling }) {
                 type="button"
                 onClick={() => {
                   setFeeling(feel.emotion);
+                  setEmo(feel.emotion);
                   setPage(page + 1);
                 }}
                 key={feel.emotion}
@@ -96,7 +100,10 @@ function StoryInputForm({ onChange, onSubmit, form, setFeeling }) {
           </div>
         </StoryCreateForm>
       ) : null}
-      {page === 2 ? <SongSearch type={"post"} setPage={setPage} /> : null}
+
+      {page === 2 ? <SongRecommend setPage={setPage} emotion={emo} /> : null}
+      {page === 3 ? <SongSearch type={"post"} setPage={setPage} /> : null}
+
       {page === 4 ? <StoryResultPage form={form} onSubmit={onSubmit} /> : null}
     </>
   );

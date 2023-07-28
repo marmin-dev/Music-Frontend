@@ -34,3 +34,12 @@ export const getStoryDetail = async (storyId) => {
   );
   return response.data;
 };
+
+export const getRecommendSong = async ({ emotion }) => {
+  const response = await axios.post(
+    "https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/songrec",
+    { emotion }
+  );
+  console.log(response);
+  return response.data;
+};
