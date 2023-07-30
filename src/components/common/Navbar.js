@@ -42,7 +42,7 @@ const Navbar = ({ to, toSong }) => {
         </STLink>
       </NavItem>
       <NavItem>
-        <STLink>
+        <STLink to={`/song`}>
           <NavImg src={searchImg} />
         </STLink>
       </NavItem>
