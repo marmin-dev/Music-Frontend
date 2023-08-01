@@ -17,12 +17,14 @@ const StoreDetail = () => {
   const [modal, setModal] = useState(false);
   const [stories, setStories] = useState([]);
   const [playList, setPlayList] = useState([]);
+  const [username, setUsername] = useState("");
   // -----------------------------------------------------
   useEffect(() => {
     // console.log(id);
     const fetch = async () => {
       const response = await getStoreDetail(id.id);
       setStoreName(response.data.storeName);
+      setUsername(response.data.username);
     };
     const fetchListData = async () => {
       const response = await getStoryList(id.id);
@@ -45,7 +47,12 @@ const StoreDetail = () => {
       <HeaderPlus content={storeName} type={false} event={clickMenu} />
 
       <DetailBodyDiv>
-        <SpotifyPlay id={id.id} token={token} playList={playList} />
+        <SpotifyPlay
+          id={id.id}
+          token={token}
+          playList={playList}
+          username={username}
+        />
         <div style={{ height: "20px" }} />
         <StoryList stories={stories} loggedIn={token} />
       </DetailBodyDiv>

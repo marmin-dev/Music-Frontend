@@ -2,15 +2,33 @@ import React, { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
 import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
+import { spotifyApi } from "../../api/spotifyApi";
 
-const SpotifyPlay = ({ token, id, playList }) => {
+const SpotifyPlay = ({ token, id, playList, username }) => {
   //   const spotifyToken = token;
   const url = `https://auth.sumsumai.click`;
-  useEffect(() => console.log(playList));
+  // const url = "http://localhost:8888";
+
+  const locUser = localStorage.getItem("username");
+
+  useEffect(() => {
+    // console.log(playList);
+    // console.log(username);
+    // console.log(locUser);
+    // const fetch = async () => {
+    //   spotifyApi.setAccessToken(token);
+    //   const response = await spotifyApi.getMyCurrentPlayingTrack();
+    // };
+  }, []);
 
   return (
     <SpotifyDiv>
-      {token ? (
+      {token ? null : (
+        <SpotifyLink to={url}>
+          <Button>스포티파이 로그인하기</Button>
+        </SpotifyLink>
+      )}
+      {username === locUser && locUser ? (
         <SpotifyPlayer
           token={token}
           uris={playList}
@@ -24,11 +42,7 @@ const SpotifyPlay = ({ token, id, playList }) => {
             trackNameColor: "#fff",
           }}
         />
-      ) : (
-        <SpotifyLink to={url}>
-          <Button>스포티파이 로그인하기</Button>
-        </SpotifyLink>
-      )}
+      ) : null}
     </SpotifyDiv>
   );
 };
