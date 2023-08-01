@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create();
-
+// axios 객체 생성 및 기본설정
 client.interceptors.response.use(
   (response) => {
     console.log(response);

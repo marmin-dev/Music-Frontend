@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// 회원 탈톼하기
 export const deleteUser = async () => {
   const id = localStorage.getItem("userId");
   const response = await axios.delete(

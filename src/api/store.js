@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// 스토어 리스트 가져오기
 export const getStoreListByPage = async (page) => {
   try {
     const response = await axios.get(
@@ -12,6 +13,7 @@ export const getStoreListByPage = async (page) => {
   }
 };
 
+// 내 스토어 리스트 가져오기
 export const getStoreListByUser = async () => {
   const id = localStorage.getItem("userId");
   try {
@@ -25,6 +27,7 @@ export const getStoreListByUser = async () => {
   }
 };
 
+// 가게 생성하기
 export const createStore = async ({ userId, storeName }) => {
   console.log({ userId, storeName });
   await axios

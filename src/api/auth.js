@@ -12,6 +12,7 @@ export const login = ({ userId, password }) =>
       return response;
     });
 
+// 회원가입 API 호출
 export const register = ({ username, userId, password }) =>
   client
     .post(

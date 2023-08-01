@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// 스토리 리스트 가죵져오기
 export const getStoryList = async (storeId) => {
   const response = await axios.get(
     `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/story/list/${storeId}`
@@ -8,6 +9,7 @@ export const getStoryList = async (storeId) => {
   return response.data;
 };
 
+// 스토리 등록하기
 export const postStory = async ({
   songName,
   artist,
