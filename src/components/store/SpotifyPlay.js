@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Button } from "../loginRegister/LoginComponents";
 import { SpotifyDiv, SpotifyLink } from "./StoreStyle";
-import { spotifyApi } from "../../api/spotifyApi";
+// import { spotifyApi } from "../../api/spotifyApi";
 
 const SpotifyPlay = ({ token, id, playList, username }) => {
   //   const spotifyToken = token;
@@ -28,7 +28,7 @@ const SpotifyPlay = ({ token, id, playList, username }) => {
           <Button>스포티파이 로그인하기</Button>
         </SpotifyLink>
       )}
-      {username === locUser && locUser ? (
+      {username === locUser && locUser && localStorage.getItem("SPOTIFY") ? (
         <SpotifyPlayer
           token={token}
           uris={playList}

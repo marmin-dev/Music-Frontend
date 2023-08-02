@@ -9,6 +9,7 @@ import HeaderPlus from "../components/common/HeaderPlus";
 import { ModalBtn, UserDeleteModal } from "../components/mypage/MyPageStyle";
 import { getStoryList } from "../api/story";
 import StoryList from "../components/story/StoryList";
+import { spotifyApi } from "../api/spotifyApi";
 
 const StoreDetail = () => {
   const id = useParams("id");
@@ -18,6 +19,7 @@ const StoreDetail = () => {
   const [stories, setStories] = useState([]);
   const [playList, setPlayList] = useState([]);
   const [username, setUsername] = useState("");
+  const [shuffle, setShuffle] = useState(1);
   // -----------------------------------------------------
   useEffect(() => {
     // console.log(id);
@@ -31,14 +33,122 @@ const StoreDetail = () => {
       setStories(response);
       const newPlayList = response.map((song) => `spotify:track:${song.uri}`);
       setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
+      setShuffle(0);
     };
-
-    fetchListData();
     fetch();
+    fetchListData();
   }, []);
+
+  useEffect(() => {
+    shuffleList();
+  }, [shuffle]);
 
   const clickMenu = () => {
     setModal(true);
+  };
+  // > ================= algorithm =============================
+  function combineSubsets(subsets, distances) {
+    const combinedSubset = [];
+    subsets.forEach((subset, index) => {
+      const sortedSubset = distances[index].map(
+        (distanceObj) => distanceObj.node1
+      );
+      combinedSubset.push(...subset, ...sortedSubset.slice(1));
+    });
+
+    // 중복 제거를 위해 Set을 사용하여 유니크한 노드만 남기고 다시 배열로 변환
+    const uniqueCombinedSubset = Array.from(new Set(combinedSubset));
+    return uniqueCombinedSubset;
+  }
+  function euclideanDistance(node1, node2) {
+    const keysToUse = [
+      "energy",
+      "valence",
+      "key",
+      "acousticness",
+      "liveness",
+      "loudness",
+      "speechiness",
+      "tempo",
+      "danceability",
+    ];
+
+    const sumOfSquares = keysToUse.reduce((sum, key) => {
+      return sum + Math.pow(node1[key] - node2[key], 2);
+    }, 0);
+
+    return Math.sqrt(sumOfSquares);
+  }
+  function getAllPairsDistances(nodes) {
+    const distances = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const distance = euclideanDistance(nodes[i], nodes[j]);
+        distances.push({
+          node1: nodes[i],
+          node2: nodes[j],
+          distance: distance,
+        });
+      }
+    }
+    return distances;
+  }
+  const shuffleList = async () => {
+    const getResponse = async (song) => {
+      const response = await spotifyApi.getAudioFeaturesForTrack(song.uri);
+      console.log(response);
+      return {
+        energy: response.energy,
+        valence: response.valence,
+        key: response.key,
+        acousticness: response.acousticness,
+        liveness: response.liveness,
+        loudness: response.loudness,
+        speechiness: response.speechiness,
+        tempo: response.tempo,
+        danceability: response.danceability,
+      };
+    };
+    const updatedSongs = await Promise.all(
+      stories.map((song) => getResponse(song))
+    );
+    // 응답을 원래 노래와 매핑하여 energy와 valence 속성을 추가
+    const updatedSongsWithAttributes = updatedSongs.map((response, index) => {
+      return {
+        ...stories[index],
+        energy: response.energy,
+        valence: response.valence,
+        key: response.key,
+        acousticness: response.acousticness,
+        liveness: response.liveness,
+        loudness: response.loudness,
+        speechiness: response.speechiness,
+        tempo: response.tempo,
+        danceability: response.danceability,
+      };
+    });
+
+    const subsets = [];
+    for (let i = 0; i < updatedSongsWithAttributes.length; i += 5) {
+      const subset = updatedSongsWithAttributes.slice(i, i + 5);
+      subsets.push(subset);
+    }
+
+    // 각 서브셋에 대해 모든 노드 간의 거리를 계산하여 distances 배열에 저장
+    const distances = subsets.map((subset) => getAllPairsDistances(subset));
+
+    // distances 배열을 거리를 기준으로 정렬
+    distances.forEach((distanceArr) => {
+      distanceArr.sort((a, b) => a.distance - b.distance);
+    });
+
+    // 최적화된 서브셋을 합쳐서 최종 결과를 얻음
+    const optimizedSubset = combineSubsets(subsets, distances);
+    setStories(optimizedSubset);
+    const newPlayList = optimizedSubset.map(
+      (song) => `spotify:track:${song.uri}`
+    );
+    setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
   };
 
   // -----------------------------------------------------
@@ -59,15 +169,16 @@ const StoreDetail = () => {
       {modal ? (
         <UserDeleteModal>
           <ModalBtn
-            onClick={() =>
-              (window.location.href = "https://auth.sumsumai.click")
-            }
+            onClick={() => (window.location.href = "http://localhost:8888")}
           >
             스포티파이 다시 로그인하기
           </ModalBtn>
           <ModalBtn onClick={() => window.location.reload()}>
             리스트 불러오기
           </ModalBtn>
+          {/* <ModalBtn onClick={() => shuffleList()}>
+            플레이리스트 재배치하기
+          </ModalBtn> */}
           <ModalBtn onClick={() => setModal(false)}>취소</ModalBtn>
         </UserDeleteModal>
       ) : null}

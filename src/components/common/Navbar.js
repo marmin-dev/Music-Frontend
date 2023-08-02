@@ -42,9 +42,15 @@ const Navbar = ({ to, toSong }) => {
         </STLink>
       </NavItem>
       <NavItem>
-        <STLink to={`/song`}>
-          <NavImg src={searchImg} />
-        </STLink>
+        {token ? (
+          <STLink to={`/song`}>
+            <NavImg src={playImg} />
+          </STLink>
+        ) : (
+          <STLink to={`/login`}>
+            <NavImg src={playImg} />
+          </STLink>
+        )}
       </NavItem>
       <NavItem>
         {token || token !== null ? (
@@ -71,9 +77,15 @@ const Navbar = ({ to, toSong }) => {
         </NavItem>
       ) : (
         <NavItem>
-          <STLink to={`/song`}>
-            <NavImg src={playImg} />
-          </STLink>
+          {token ? (
+            <STLink to={`/song`}>
+              <NavImg src={playImg} />
+            </STLink>
+          ) : (
+            <STLink to={`/login`}>
+              <NavImg src={playImg} />
+            </STLink>
+          )}
         </NavItem>
       )}
       <NavItem>

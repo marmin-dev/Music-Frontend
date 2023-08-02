@@ -7,7 +7,7 @@ import HeaderPlus from "../components/common/HeaderPlus";
 const StoreListPage = () => {
   return (
     <Responsive>
-      <HeaderPlus content={"가게목록"} type={true} />
+      <HeaderPlus content={"DJ부스 목록"} type={true} />
       <StoreList />
       <Navbar to={"/store/create"} />
     </Responsive>
