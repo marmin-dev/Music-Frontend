@@ -33,7 +33,7 @@ const StoreDetail = () => {
       setStories(response);
       const newPlayList = response.map((song) => `spotify:track:${song.uri}`);
       setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
-      setShuffle(0);
+      setShuffle(response);
     };
     fetch();
     fetchListData();
@@ -43,7 +43,9 @@ const StoreDetail = () => {
     const shuffleThat = async () => {
       await shuffleList();
     };
-    if (stories > 2) {
+    // console.log("일어난다");
+    if (stories.length > 2) {
+      // console.log("일어나지 않는다");
       shuffleThat();
     }
   }, [shuffle]);
@@ -61,8 +63,8 @@ const StoreDetail = () => {
         sortedSubset.push(distanceObj.node1);
         sortedSubset.push(distanceObj.node2);
       });
-      // console.log(subsets);
-      // console.log(sortedSubset);
+      console.log(subsets);
+      console.log(sortedSubset);
       combinedSubset.push(...sortedSubset.slice(1));
     });
 
@@ -160,12 +162,12 @@ const StoreDetail = () => {
     distances.forEach((distanceArr) => {
       distanceArr.sort((a, b) => a.distance - b.distance);
     });
-    console.log(distances);
+    // console.log(distances);
 
     // 최적화된 서브셋을 합쳐서 최종 결과를 얻음
     const optimizedSubset = combineSubsets(subsets, distances);
 
-    console.log(optimizedSubset);
+    // console.log(optimizedSubset);
 
     setStories(optimizedSubset);
 
