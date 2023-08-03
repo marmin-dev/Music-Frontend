@@ -26,7 +26,8 @@ export const StoryListItemDiv2 = styled.div`
   height: 20%;
   min-height: 20%;
   border: 1px solid lightgray;
-  background-color: rgba(26, 227, 204, 1);
+  background-color: rgba(106, 224, 204);
+  // background-image: linear-gradient(rgba(106, 224, 204), rgba(200, 224, 204, 0.5));
 `;
 
 export const ImgDiv2 = styled(ImgDiv)`

@@ -44,10 +44,10 @@ const StoryDetail = () => {
   }, []);
   // -------------------------------------------
   return (
-    <Responsive>
-      <Header content={`${username}의 신청곡`} />
+    <div className="ResponsiveBackground">
+      <Header content={`${username}의 신청곡 ${data.songName}  ${data.artist}`} />
       <DetailBodyDiv>
-        <PlayListDiv>
+        {/* <PlayListDiv>
           <ImgDiv2>
             {spotifyToken ? (
               <ItemImg src={img.url} />
@@ -59,11 +59,11 @@ const StoryDetail = () => {
             <Songp>{data.songName}</Songp>
             <ArtistP>{data.artist}</ArtistP>
           </ItemTextDiv2>
-        </PlayListDiv>
+        </PlayListDiv> */}
         <StoryComment data={data} />
       </DetailBodyDiv>
       <Navbar to={`/story/create/${storyId.storeid}`} toSong={storyId.id} />
-    </Responsive>
+    </div>
   );
 };
 

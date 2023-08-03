@@ -1,19 +1,18 @@
 import { styled } from "styled-components";
 
-export const Responsive = styled.div`
+export const Entrance = styled.div`
   background-image: url("./img/logo3.png");
   width: 100vw;
   background-size : auto;
   background-repeat : no-repeat;
   background-position: center center;
-  background-color: rgba(106, 224, 204);
 
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(106, 224, 204);
   @media (min-width: 480px) {
     width: 480px;
   }
@@ -21,5 +20,3 @@ export const Responsive = styled.div`
     width: 100vw;
   }
 `;
-
-
