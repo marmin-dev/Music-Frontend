@@ -40,7 +40,12 @@ const StoreDetail = () => {
   }, []);
 
   useEffect(() => {
-    shuffleList();
+    const shuffleThat = async () => {
+      await shuffleList();
+    };
+    if (stories > 2) {
+      shuffleThat();
+    }
   }, [shuffle]);
 
   const clickMenu = () => {
@@ -50,16 +55,24 @@ const StoreDetail = () => {
   function combineSubsets(subsets, distances) {
     const combinedSubset = [];
     subsets.forEach((subset, index) => {
-      const sortedSubset = distances[index].map(
-        (distanceObj) => distanceObj.node1
-      );
-      combinedSubset.push(...subset, ...sortedSubset.slice(1));
+      // console.log(index);
+      const sortedSubset = [];
+      distances[index].forEach((distanceObj) => {
+        sortedSubset.push(distanceObj.node1);
+        sortedSubset.push(distanceObj.node2);
+      });
+      // console.log(subsets);
+      // console.log(sortedSubset);
+      combinedSubset.push(...sortedSubset.slice(1));
     });
 
     // 중복 제거를 위해 Set을 사용하여 유니크한 노드만 남기고 다시 배열로 변환
     const uniqueCombinedSubset = Array.from(new Set(combinedSubset));
+    // console.log(combinedSubset);
+    // console.log(uniqueCombinedSubset);
     return uniqueCombinedSubset;
   }
+
   function euclideanDistance(node1, node2) {
     const keysToUse = [
       "energy",
@@ -79,9 +92,10 @@ const StoreDetail = () => {
 
     return Math.sqrt(sumOfSquares);
   }
+
   function getAllPairsDistances(nodes) {
     const distances = [];
-    for (let i = 0; i < nodes.length; i++) {
+    for (let i = 0; i < nodes.length + 1; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const distance = euclideanDistance(nodes[i], nodes[j]);
         distances.push({
@@ -91,12 +105,14 @@ const StoreDetail = () => {
         });
       }
     }
+    // console.log(distances);
     return distances;
   }
+
   const shuffleList = async () => {
     const getResponse = async (song) => {
       const response = await spotifyApi.getAudioFeaturesForTrack(song.uri);
-      console.log(response);
+      // console.log(response);
       return {
         energy: response.energy,
         valence: response.valence,
@@ -112,6 +128,7 @@ const StoreDetail = () => {
     const updatedSongs = await Promise.all(
       stories.map((song) => getResponse(song))
     );
+
     // 응답을 원래 노래와 매핑하여 energy와 valence 속성을 추가
     const updatedSongsWithAttributes = updatedSongs.map((response, index) => {
       return {
@@ -129,9 +146,11 @@ const StoreDetail = () => {
     });
 
     const subsets = [];
+
     for (let i = 0; i < updatedSongsWithAttributes.length; i += 5) {
       const subset = updatedSongsWithAttributes.slice(i, i + 5);
       subsets.push(subset);
+      console.log(subsets);
     }
 
     // 각 서브셋에 대해 모든 노드 간의 거리를 계산하여 distances 배열에 저장
@@ -141,13 +160,19 @@ const StoreDetail = () => {
     distances.forEach((distanceArr) => {
       distanceArr.sort((a, b) => a.distance - b.distance);
     });
+    console.log(distances);
 
     // 최적화된 서브셋을 합쳐서 최종 결과를 얻음
     const optimizedSubset = combineSubsets(subsets, distances);
+
+    console.log(optimizedSubset);
+
     setStories(optimizedSubset);
+
     const newPlayList = optimizedSubset.map(
       (song) => `spotify:track:${song.uri}`
     );
+
     setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
   };
 
@@ -155,7 +180,6 @@ const StoreDetail = () => {
   return (
     <Responsive>
       <HeaderPlus content={storeName} type={false} event={clickMenu} />
-
       <DetailBodyDiv>
         <SpotifyPlay
           id={id.id}

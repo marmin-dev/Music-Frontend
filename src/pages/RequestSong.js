@@ -15,10 +15,9 @@ import {
   SongTextDiv,
 } from "../components/song/SongStyle";
 import { useParams } from "react-router-dom";
-import { ImgDiv } from "../components/store/StoreStyle";
+
 import playImg from "../img/play.png";
 import { Button } from "../components/loginRegister/LoginComponents";
-import { spotifyApi } from "../api/spotifyApi";
 
 function RequestSong() {
   const dispatch = useDispatch();
