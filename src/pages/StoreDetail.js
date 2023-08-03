@@ -180,17 +180,23 @@ const StoreDetail = () => {
 
   // -----------------------------------------------------
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <HeaderPlus content={storeName} type={false} event={clickMenu} />
       <DetailBodyDiv>
+        {/* <SpotifyPlay
+          id={id.id}
+          token={token}
+          playList={playList}
+          username={username}
+        /> */}
+        <div style={{ height: "20px" }} />
+        <StoryList stories={stories} loggedIn={token} />
         <SpotifyPlay
           id={id.id}
           token={token}
           playList={playList}
           username={username}
         />
-        <div style={{ height: "20px" }} />
-        <StoryList stories={stories} loggedIn={token} />
       </DetailBodyDiv>
       {modal ? (
         <UserDeleteModal>
@@ -209,7 +215,7 @@ const StoreDetail = () => {
         </UserDeleteModal>
       ) : null}
       <Navbar to={`/story/create/${id.id}`} toSong={id.id} />
-    </Responsive>
+    </div>
   );
 };
 

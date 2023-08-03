@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-import homeImg from "../../img/home.png";
-import searchImg from "../../img/search.png";
-import writeImg from "../../img/write.png";
-import playImg from "../../img/play.png";
-import userImg from "../../img/user.png";
+import homeImg from "../../img/home5.png";
+import searchImg from "../../img/search5.png";
+import writeImg from "../../img/write5.png";
+import playImg from "../../img/play3.png";
+import userImg from "../../img/user4.png";
 
 const NavDiv = styled.div`
   display: flex;
   flex-direction: row;
-  height: 10%;
+  height: 8%;
   width: inherit;
   position: fixed;
   bottom: 0;
-  border-top: 1px solid lightgray;
+  // border-top: 1px solid lightgray;
+
+  box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.1);
 `;
 const NavItem = styled.div`
   flex: 1;
@@ -23,12 +25,13 @@ const NavItem = styled.div`
   align-items: center;
 `;
 const NavImg = styled.img`
-  width: 50%;
+  width: 40%;
 `;
 const STLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const Navbar = ({ to, toSong }) => {
@@ -44,13 +47,14 @@ const Navbar = ({ to, toSong }) => {
       <NavItem>
         {token ? (
           <STLink to={`/song`}>
-            <NavImg src={playImg} />
+            <NavImg src={searchImg} />
           </STLink>
         ) : (
           <STLink to={`/login`}>
             <NavImg src={playImg} />
           </STLink>
-        )}
+        )}  
+
       </NavItem>
       <NavItem>
         {token || token !== null ? (

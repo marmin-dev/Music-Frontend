@@ -4,9 +4,18 @@ import { styled } from "styled-components";
 export const ItemDiv = styled.div`
   display: flex;
   flex-direction: row;
-  height: 10%;
+  // height: 10%;
   justify-content: center;
-  border-bottom: 1px solid lightgray;
+  // border-bottom: 1px solid lightgray;
+
+  height: 20%;
+  border: 1px solid lightgray;
+  border-radius : 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const ItemImg = styled.img`
@@ -17,7 +26,7 @@ export const ItemImg = styled.img`
 `;
 
 export const ImgDiv = styled.div`
-  width: 15%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
