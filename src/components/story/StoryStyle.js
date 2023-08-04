@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { keyframes, styled } from "styled-components";
 import { ImgDiv, ItemTextDiv } from "../store/StoreStyle";
 
 export const StoryListDiv = styled.div`
@@ -174,4 +174,26 @@ export const TextDiv = styled.div`
   width: 90%;
   background-color: lightgrey;
   overflow-y: scroll;
+`;
+
+export const LoadingDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+const rotateAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+// 이미지 스타일드 컴포넌트 정의
+export const LoadingImg = styled.img`
+  width: 30%;
+  animation: ${rotateAnimation} 4s linear infinite;
 `;
