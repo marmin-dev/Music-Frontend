@@ -22,9 +22,11 @@ const PostStory = () => {
   }));
   const storeId = useParams("id");
   const [feeling, setFeeling] = useState("");
+  const [content, setContent] = useState("");
   // --------------------------------------------------
   const onChange = (e) => {
     const { value, name } = e.target;
+    setContent(e.target.value);
     dispatch(
       changeStoryField({
         key: name,
@@ -72,6 +74,8 @@ const PostStory = () => {
           onSubmit={onSubmit}
           form={form}
           setFeeling={setFeeling}
+          content={content}
+          setContent={setContent}
         />
       </BodyDiv>
       <Navbar to={`/story/create/${storeId.id}`} toSong={storeId.id} />
