@@ -45,7 +45,7 @@ function RequestSong() {
   };
   // >>==================================================
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"노래 신청하기"} />
       {page === 0 ? (
         <div style={{ height: "80%", width: "100%" }}>
@@ -68,7 +68,7 @@ function RequestSong() {
         </div>
       ) : null}
       <Navbar to={`/story/create/${storeId.id}`} toSong={storeId.id} />
-    </Responsive>
+    </div>
   );
 }
 

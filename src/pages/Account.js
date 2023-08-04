@@ -8,11 +8,11 @@ const Account = () => {
   const [username, setUsername] = useState(localStorage.getItem("username"));
 
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={username + "님의 계정"} />
       <UserNameH2>{username}</UserNameH2>
       <Navbar to={"/store/create"} />
-    </Responsive>
+    </div>
   );
 };
 

@@ -63,7 +63,7 @@ const Login = () => {
   }, [auth, authError, dispatch]);
 
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"로그인"} />
       <LoginLogo src={logoImg} />
       <SpaceDiv />
@@ -75,7 +75,7 @@ const Login = () => {
         error={error}
       />
       <Navbar />
-    </Responsive>
+    </div>
   );
 };
 

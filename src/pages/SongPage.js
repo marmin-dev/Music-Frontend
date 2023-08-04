@@ -5,13 +5,13 @@ import SongSearch from "../components/song/SongSearch";
 
 function SongPage() {
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"노래 둘러보기"} />
       <div style={{ height: "80%", width: "100%" }}>
         <SongSearch type={false} />
       </div>
       <Navbar />
-    </Responsive>
+    </div>
   );
 }
 
