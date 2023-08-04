@@ -8,7 +8,7 @@ import { DetailBodyDiv } from "../components/common/Divs";
 import {
   ImgDiv2,
   ItemTextDiv2,
-  PlayListDiv,
+  StoryPlayListDiv,
 } from "../components/story/StoryStyle";
 import { ItemImg } from "../components/store/StoreStyle";
 import { ArtistP, Songp } from "../components/story/StoryListItem";
@@ -45,9 +45,10 @@ const StoryDetail = () => {
   // -------------------------------------------
   return (
     <div className="ResponsiveBackground">
-      <Header content={`${username}의 신청곡 ${data.songName}  ${data.artist}`} />
+      <Header content={`@${username}`} />
       <DetailBodyDiv>
-        {/* <PlayListDiv>
+        <StoryComment data={data} />
+        <StoryPlayListDiv>
           <ImgDiv2>
             {spotifyToken ? (
               <ItemImg src={img.url} />
@@ -59,8 +60,7 @@ const StoryDetail = () => {
             <Songp>{data.songName}</Songp>
             <ArtistP>{data.artist}</ArtistP>
           </ItemTextDiv2>
-        </PlayListDiv> */}
-        <StoryComment data={data} />
+        </StoryPlayListDiv>
       </DetailBodyDiv>
       <Navbar to={`/story/create/${storyId.storeid}`} toSong={storyId.id} />
     </div>

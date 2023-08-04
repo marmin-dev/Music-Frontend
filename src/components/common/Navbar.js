@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-import homeImg from "../../img/home5.png";
-import searchImg from "../../img/search5.png";
-import writeImg from "../../img/write5.png";
-import playImg from "../../img/play3.png";
-import userImg from "../../img/user4.png";
+import homeImg from "../../img/home7.png";
+import searchImg from "../../img/search7.png";
+import writeImg from "../../img/write7.png";
+import playImg from "../../img/play4.png";
+import userImg from "../../img/user6.png";
 
 const NavDiv = styled.div`
   display: flex;

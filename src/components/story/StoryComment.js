@@ -7,11 +7,13 @@ import {
   CommentImage,
   CommentInput,
   CommentItemDiv,
-  StoryContentDiv,
+  StoryContentInner,
+  BtnContentInner,
+  CommentContentInner,
   StoryListDiv,
 } from "./StoryStyle";
 import heart from "../../img/heart.png";
-import chat from "../../img/chat.png";
+import chat from "../../img/send.png";
 import { useEffect, useState } from "react";
 import { createComment, getCommentList } from "../../api/comment";
 import { useParams } from "react-router-dom";
@@ -60,11 +62,19 @@ const StoryComment = ({ data }) => {
   };
 
   return (
-    <StoryListDiv>
-      <StoryContentDiv>{data.content}</StoryContentDiv>
+    // <StoryListDiv>
+    <div className="StoryListDiv">
+      <div className="StoryContentDiv">
+        <StoryContentInner>
+          {data.content}
+        </StoryContentInner>
+      </div>  
       <CommentBtnDiv>
         {/* <CommentImage src={heart} /> */}
-        <CommentImage src={chat} onClick={click} />
+        <BtnContentInner>
+          <CommentImage src={chat} onClick={click} />
+          <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>댓글 {amount}개</p>
+        </BtnContentInner>
       </CommentBtnDiv>
       {create ? (
         <CommentForm onSubmit={onSubmit}>
@@ -76,16 +86,19 @@ const StoryComment = ({ data }) => {
           <CommentBtn>댓글등록</CommentBtn>
         </CommentForm>
       ) : null}
-      <CommentADiv>
-        <p style={{ paddingLeft: "10px" }}>댓글 {amount}개</p>
-      </CommentADiv>
-      {comments.map((comment) => (
-        <CommentItemDiv key={comment.id}>
-          <CommentAuthor>{comment.username}</CommentAuthor>
-          {comment.content}
-        </CommentItemDiv>
-      ))}
-    </StoryListDiv>
+      {/* <CommentADiv>
+        
+      </CommentADiv> */}
+      <CommentContentInner>
+        {comments.map((comment) => (
+            <CommentItemDiv key={comment.id}>
+              <CommentAuthor>{comment.username}</CommentAuthor>
+              {comment.content}
+            </CommentItemDiv>
+        ))}
+      </CommentContentInner>
+    </div>  
+
   );
 };
 
