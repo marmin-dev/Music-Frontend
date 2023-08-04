@@ -17,7 +17,7 @@ const MyDj = () => {
     fetchData();
   }, []);
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <HeaderPlus content={"내 DJ부스"} type={true} />
       <BodyDiv>
         {items.map((item) => (
@@ -25,7 +25,7 @@ const MyDj = () => {
         ))}
       </BodyDiv>
       <Navbar to={"/store/create"} />
-    </Responsive>
+    </div>
   );
 };
 

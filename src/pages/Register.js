@@ -64,7 +64,7 @@ const Register = () => {
     }
   }, [auth, authError]);
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"회원가입"} />
       <LoginLogo src={logoImg} />
       <SpaceDiv />
@@ -76,7 +76,7 @@ const Register = () => {
         error={error}
       />
       <Navbar />
-    </Responsive>
+    </div>
   );
 };
 

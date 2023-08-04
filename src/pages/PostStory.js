@@ -66,7 +66,7 @@ const PostStory = () => {
   // --------------------------------------------------
 
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"사연 작성"} />
       <BodyDiv>
         <StoryInputForm
@@ -79,7 +79,7 @@ const PostStory = () => {
         />
       </BodyDiv>
       <Navbar to={`/story/create/${storeId.id}`} toSong={storeId.id} />
-    </Responsive>
+    </div>
   );
 };
 
