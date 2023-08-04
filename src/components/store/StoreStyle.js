@@ -25,6 +25,14 @@ export const ItemImg = styled.img`
   justify-content: center;
 `;
 
+export const ItemImgSpecial = styled.img`
+  width: 53%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+
 export const ImgDiv = styled.div`
   width: 30%;
   display: flex;

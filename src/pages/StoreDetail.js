@@ -193,7 +193,7 @@ const StoreDetail = () => {
           playList={playList}
           username={username}
         /> */}
-        <div style={{ height: "20px" }} />
+        <div style={{ height: "3px" }} />
         <StoryList stories={stories} loggedIn={token} />
         <SpotifyPlay
           id={id.id}
