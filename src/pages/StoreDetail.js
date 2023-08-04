@@ -57,15 +57,18 @@ const StoreDetail = () => {
   function combineSubsets(subsets, distances) {
     const combinedSubset = [];
     subsets.forEach((subset, index) => {
-      // console.log(index);
+      console.log(subset);
       const sortedSubset = [];
-      distances[index].forEach((distanceObj) => {
-        sortedSubset.push(distanceObj.node1);
-        sortedSubset.push(distanceObj.node2);
-      });
-      console.log(subsets);
-      console.log(sortedSubset);
-      combinedSubset.push(...sortedSubset.slice(1));
+      if (subset.length > 1) {
+        distances[index].forEach((distanceObj) => {
+          sortedSubset.push(distanceObj.node1);
+          sortedSubset.push(distanceObj.node2);
+        });
+      } else {
+        sortedSubset.push(subset[0]);
+      }
+
+      combinedSubset.push(...sortedSubset);
     });
 
     // 중복 제거를 위해 Set을 사용하여 유니크한 노드만 남기고 다시 배열로 변환
@@ -107,7 +110,8 @@ const StoreDetail = () => {
         });
       }
     }
-    // console.log(distances);
+
+    console.log(distances);
     return distances;
   }
 
