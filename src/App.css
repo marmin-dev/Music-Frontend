@@ -43,3 +43,30 @@ body{
   background-color: rgba(239, 239, 239, 1);
 
 }
+
+.Entrance{
+  position: absolute;
+  bottom: 5vh;
+  color: white;
+}
+
+.Enter{
+  color : black;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.ResponsiveBackground{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  @media (min-width: 480px) {
+    width: 480px;
+  }
+  @media (max-width: 480px) {
+    width: 100vw;
+  }
+}

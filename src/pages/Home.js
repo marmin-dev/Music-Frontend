@@ -3,6 +3,7 @@ import {
   Container,
   Rectangle23,
   Rectangle3,
+  RectangleBottom,
   StartText,
   TextContainer,
 } from "../components/landing/landing";
@@ -41,7 +42,7 @@ const Home = () => {
     <Responsive>
       <Container>
         <Rectangle23 />
-        <TextContainer>
+        {/* <TextContainer>
           <span>
             안녕하세요,
             <br />
@@ -49,16 +50,18 @@ const Home = () => {
             <br />
             신청해 주시겠어요?
           </span>
-        </TextContainer>
+        </TextContainer> */}
         <Rectangle23 />
-        <Rectangle3>
+      </Container>
+      <div className="Entrance">
+        <RectangleBottom>
           <StartText>
             <StartLink to={"/stores"}>
-              <span>네 지금 바로 시작해요 🙌</span>
+              <span className="Enter">시작하기</span>
             </StartLink>
           </StartText>
-        </Rectangle3>
-      </Container>
+        </RectangleBottom>
+      </div>
     </Responsive>
   );
 };

@@ -28,7 +28,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: rgba(26, 227, 204, 1);
+  background-color: rgba(106, 224, 204);
+  // background-image: linear-gradient(rgba(106, 224, 204), rgba(200, 224, 204, 0.5));
   width: 80%;
   border: none;
   border-radius: 15px;
@@ -36,7 +37,7 @@ export const Button = styled.button`
   height: 5vh;
   margin-top: 5px;
   &:hover {
-    background-color: rgba(26, 255, 220, 1);
+    background-color: rgba(106, 224, 204);
   }
 `;
 
