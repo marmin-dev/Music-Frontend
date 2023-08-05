@@ -19,3 +19,14 @@ export const createComment = async (storyId, { userId, content }) => {
       return response;
     });
 };
+
+// export const deleteComment = async (id) => {
+//   await axios
+//     .delete(
+//       `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/comment/${id}`
+//     )
+//     .then((res) => {
+//       console.log(res);
+//       window.location.reload();
+//     });
+// };

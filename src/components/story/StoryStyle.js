@@ -19,7 +19,7 @@ export const StoryListItemDiv = styled.div`
   width: 95%;
   height: 15%;
   border: 1px solid lightgray;
-  border-radius : 20px;
+  border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3px;
@@ -37,12 +37,11 @@ export const StoryListItemDiv2 = styled.div`
   width: 95%;
   height: 15%;
   border: 1px solid lightgray;
-  border-radius : 20px;
+  border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3px;
   margin-bottom: 3px;
-
 
   &:hover {
     background-color: rgba(106, 224, 204);
@@ -92,7 +91,6 @@ export const StoryContentDiv = styled.div`
   padding-bottom: 1vh;
   padding-top: 1vh;
 `;
-
 
 export const StoryContentInner = styled.div`
   position: relative;
@@ -145,7 +143,7 @@ export const CommentBtnDiv = styled.div`
   // border-bottom: 1px solid lightgray;
 
   // box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.1);
-  border-top: 0.01px solid rgb(0,0,0, 0.1);
+  border-top: 0.01px solid rgb(0, 0, 0, 0.1);
 `;
 
 export const CommentImage = styled.img`
@@ -170,12 +168,12 @@ export const CommentItemDiv = styled.div`
   word-break: break-all;
   margin: 2px;
   // border-top: 1px solid lightgray;
-  
+
   // padding-left: auto;
   // padding-right: auto;
   margin-left: auto;
   margin-right: auto;
-  
+
   // border-bottom: 1px solid rgb(0,0,0, 0.1);
   // box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.1);
 `;
@@ -274,4 +272,10 @@ const rotateAnimation = keyframes`
 export const LoadingImg = styled.img`
   width: 30%;
   animation: ${rotateAnimation} 4s linear infinite;
+`;
+export const CommentDeleteImg = styled.img`
+  width: 2%;
+  &:hover {
+    cursor: pointer;
+  }
 `;

@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import homeImg from "../../img/home7.png";
 import searchImg from "../../img/search7.png";
 import writeImg from "../../img/write7.png";
-import playImg from "../../img/play4.png";
+import routeImg from "../../img/route.png";
 import userImg from "../../img/user6.png";
 
 const NavDiv = styled.div`
@@ -45,16 +45,31 @@ const Navbar = ({ to, toSong }) => {
         </STLink>
       </NavItem>
       <NavItem>
-        {token ? (
-          <STLink to={`/song`}>
-            <NavImg src={searchImg} />
-          </STLink>
+        {toSong ? (
+          <NavItem>
+            {token ? (
+              <STLink to={`/song/request/${toSong}`}>
+                <NavImg src={searchImg} />
+              </STLink>
+            ) : (
+              <STLink to={`/login`}>
+                <NavImg src={searchImg} />
+              </STLink>
+            )}
+          </NavItem>
         ) : (
-          <STLink to={`/login`}>
-            <NavImg src={playImg} />
-          </STLink>
-        )}  
-
+          <NavItem>
+            {token ? (
+              <STLink to={`/song`}>
+                <NavImg src={searchImg} />
+              </STLink>
+            ) : (
+              <STLink to={`/login`}>
+                <NavImg src={searchImg} />
+              </STLink>
+            )}
+          </NavItem>
+        )}
       </NavItem>
       <NavItem>
         {token || token !== null ? (
@@ -67,31 +82,19 @@ const Navbar = ({ to, toSong }) => {
           </STLink>
         )}
       </NavItem>
-      {toSong ? (
-        <NavItem>
-          {token ? (
-            <STLink to={`/song/request/${toSong}`}>
-              <NavImg src={playImg} />
-            </STLink>
-          ) : (
-            <STLink to={`/login`}>
-              <NavImg src={playImg} />
-            </STLink>
-          )}
-        </NavItem>
-      ) : (
-        <NavItem>
-          {token ? (
-            <STLink to={`/song`}>
-              <NavImg src={playImg} />
-            </STLink>
-          ) : (
-            <STLink to={`/login`}>
-              <NavImg src={playImg} />
-            </STLink>
-          )}
-        </NavItem>
-      )}
+
+      <NavItem>
+        {token ? (
+          <STLink to={`/user/info`}>
+            <NavImg src={routeImg} />
+          </STLink>
+        ) : (
+          <STLink to={`/login`}>
+            <NavImg src={routeImg} />
+          </STLink>
+        )}
+      </NavItem>
+
       <NavItem>
         {token || token !== null ? (
           <STLink to={"/mypage"}>

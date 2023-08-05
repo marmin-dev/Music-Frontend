@@ -13,6 +13,7 @@ import PostStory from "./pages/PostStory";
 import StoryDetail from "./pages/StoryDetail";
 import SongPage from "./pages/SongPage";
 import RequestSong from "./pages/RequestSong";
+import MyInfo from "./pages/MyInfo";
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
       <Route path="/song" element={<SongPage />} />
       {/* 사연없이 노래만 검색하기 */}
       <Route path="/song/request/:id" element={<RequestSong />} />
+      {/* 분석해주는 페이지 */}
+      <Route path="/user/info" element={<MyInfo />} />
     </Routes>
   );
 }

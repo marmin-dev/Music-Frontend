@@ -11,12 +11,18 @@ import {
   BtnContentInner,
   CommentContentInner,
   StoryListDiv,
+  CommentDeleteImg,
 } from "./StoryStyle";
 import heart from "../../img/heart.png";
 import chat from "../../img/send.png";
 import { useEffect, useState } from "react";
-import { createComment, getCommentList } from "../../api/comment";
+import {
+  createComment,
+  deleteComment,
+  getCommentList,
+} from "../../api/comment";
 import { useParams } from "react-router-dom";
+import crossImg from "../../img/cross.png";
 
 const StoryComment = ({ data }) => {
   const [amount, setAmount] = useState(0);
@@ -24,7 +30,9 @@ const StoryComment = ({ data }) => {
   const storyId = useParams("id");
   const [create, setCreate] = useState(false);
   const userId = localStorage.getItem("userId");
+  const username = localStorage.getItem("username");
   const [content, setContent] = useState("");
+  // >>=======================================
 
   useEffect(() => {
     const fetch = async () => {
@@ -60,20 +68,23 @@ const StoryComment = ({ data }) => {
   const onChange = (e) => {
     setContent(e.target.value);
   };
-
+  // const deleteCom = async (id) => {
+  //   await deleteComment(id);
+  // };
+  // >>=======================================
   return (
     // <StoryListDiv>
     <div className="StoryListDiv">
       <div className="StoryContentDiv">
-        <StoryContentInner>
-          {data.content}
-        </StoryContentInner>
-      </div>  
+        <StoryContentInner>{data.content}</StoryContentInner>
+      </div>
       <CommentBtnDiv>
         {/* <CommentImage src={heart} /> */}
         <BtnContentInner>
           <CommentImage src={chat} onClick={click} />
-          <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>댓글 {amount}개</p>
+          <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>
+            댓글 {amount}개
+          </p>
         </BtnContentInner>
       </CommentBtnDiv>
       {create ? (
@@ -91,14 +102,21 @@ const StoryComment = ({ data }) => {
       </CommentADiv> */}
       <CommentContentInner>
         {comments.map((comment) => (
-            <CommentItemDiv key={comment.id}>
-              <CommentAuthor>{comment.username}</CommentAuthor>
-              {comment.content}
-            </CommentItemDiv>
+          <CommentItemDiv key={comment.id}>
+            <CommentAuthor>{comment.username}</CommentAuthor>
+            {comment.content}
+            {/* {username === comment.username ? (
+              <CommentDeleteImg
+                src={crossImg}
+                onClick={() => {
+                  deleteCom(comment.id);
+                }}
+              />
+            ) : null} */}
+          </CommentItemDiv>
         ))}
       </CommentContentInner>
-    </div>  
-
+    </div>
   );
 };
 
