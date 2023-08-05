@@ -178,8 +178,8 @@ const StoreDetail = () => {
     const newPlayList = optimizedSubset.map(
       (song) => `spotify:track:${song.uri}`
     );
-
-    setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
+    // console.log(newPlayList);
+    setPlayList(newPlayList);
   };
 
   // -----------------------------------------------------

@@ -10,7 +10,7 @@ function SongPage() {
       <div style={{ height: "80%", width: "100%" }}>
         <SongSearch type={false} />
       </div>
-      <Navbar />
+      <Navbar to={"/store/create"} />
     </div>
   );
 }

@@ -54,3 +54,19 @@ export const getStoreDetail = async (id) => {
   );
   return response;
 };
+
+export const getRefStore = async (emotion) => {
+  const res = await axios.post(
+    `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/store/ref`,
+    { emotion }
+  );
+  console.log(res);
+  return res.data;
+};
+
+export const getStoreEmotion = async (id) => {
+  const response = await axios.get(
+    `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/store/ref/${id}`
+  );
+  return response.data;
+};

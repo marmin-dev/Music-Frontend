@@ -11,6 +11,7 @@ import {
   Radar,
   RadarChart,
 } from "recharts";
+import { Button } from "../components/loginRegister/LoginComponents";
 
 const BodyDiv = styled.div`
   width: 100%;
@@ -75,6 +76,9 @@ function MyInfo() {
             fillOpacity={0.6}
           />
         </RadarChart>
+        <Button onClick={() => (window.location.href = "/user/ref")}>
+          DJ부스 추천받기
+        </Button>
       </BodyDiv>
       <Navbar to={"/store/create"} />
     </div>

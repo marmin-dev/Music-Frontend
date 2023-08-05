@@ -14,6 +14,8 @@ import StoryDetail from "./pages/StoryDetail";
 import SongPage from "./pages/SongPage";
 import RequestSong from "./pages/RequestSong";
 import MyInfo from "./pages/MyInfo";
+import RefStorePage from "./pages/RefStorePage";
+import StoreUser from "./pages/StoreUser";
 
 function App() {
   return (
@@ -46,6 +48,10 @@ function App() {
       <Route path="/song/request/:id" element={<RequestSong />} />
       {/* 분석해주는 페이지 */}
       <Route path="/user/info" element={<MyInfo />} />
+      {/* 분석을 토대로 가게를 추천받는 페이지 */}
+      <Route path="/user/ref" element={<RefStorePage />} />
+      {/* 가게, 유저 분석 페이지 */}
+      <Route path="/store/data/:id" element={<StoreUser />} />
     </Routes>
   );
 }

@@ -67,7 +67,7 @@ const PostStore = () => {
         onSubmit={onSubmit}
         error={error}
       />
-      <Navbar />
+      <Navbar to={"/store/create"} />
     </div>
   );
 };
