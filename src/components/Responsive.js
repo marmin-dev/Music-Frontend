@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const Responsive = styled.div`
+export const SlidingItem = styled.div`
   background-image: url("./img/logo3.png");
   width: 100vw;
   background-size : auto;

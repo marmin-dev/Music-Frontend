@@ -76,15 +76,15 @@ const StoryComment = ({ data }) => {
     // <StoryListDiv>
     <div className="StoryListDiv">
       <div className="StoryContentDiv">
-        <StoryContentInner>{data.content}</StoryContentInner>
-      </div>
+        <StoryContentInner>
+          {data.content}
+        </StoryContentInner>
+      </div>  
       <CommentBtnDiv>
         {/* <CommentImage src={heart} /> */}
         <BtnContentInner>
           <CommentImage src={chat} onClick={click} />
-          <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>
-            댓글 {amount}개
-          </p>
+          <p style={{ paddingLeft: "10px", fontWeight: "bold", fontSize: "1em" }}>댓글 {amount}개</p>
         </BtnContentInner>
       </CommentBtnDiv>
       {create ? (

@@ -24,6 +24,10 @@ export const StoryListItemDiv = styled.div`
   margin-right: auto;
   margin-top: 3px;
   margin-bottom: 3px;
+  &:hover {
+    // background-color: rgba(129, 216, 207);
+    box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const StoryListItemDiv2 = styled.div`
@@ -44,7 +48,7 @@ export const StoryListItemDiv2 = styled.div`
   margin-bottom: 3px;
 
   &:hover {
-    background-color: rgba(106, 224, 204);
+    background-color: rgba(129, 216, 207);
     box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -57,10 +61,14 @@ export const ImgDivSpecial = styled(ImgDiv)`
   width: 26.66%;
   display: flex;
   flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9em;
 `;
 
 export const ItemTextDiv2 = styled(ItemTextDiv)`
   width: 80%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9em;
 `;
 
 export const PlayListDiv = styled(StoryListItemDiv2)`
@@ -68,7 +76,8 @@ export const PlayListDiv = styled(StoryListItemDiv2)`
 `;
 
 export const StoryPlayListDiv = styled(StoryListItemDiv2)`
-  height: 7%;
+  height: 9vh;
+  
 `;
 
 export const StoryDetailDiv = styled.div`
@@ -92,6 +101,7 @@ export const StoryContentDiv = styled.div`
   padding-top: 1vh;
 `;
 
+
 export const StoryContentInner = styled.div`
   position: relative;
   width: 95%;
@@ -100,6 +110,7 @@ export const StoryContentInner = styled.div`
 
   margin-left: auto;
   margin-right: auto;
+  font-size: 0.8em;
 `;
 
 export const BtnContentInner = styled.div`
