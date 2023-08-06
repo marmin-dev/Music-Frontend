@@ -10,6 +10,8 @@ import {
 import { Responsive } from "../components/Responsive";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import EntranceSliding from "../components/landing/EntranceSliding";
+
 
 const StartLink = styled(Link)`
   text-decoration: none;
@@ -39,20 +41,8 @@ const Home = () => {
   });
 
   return (
-    <Responsive>
-      <Container>
-        <Rectangle23 />
-        {/* <TextContainer>
-          <span>
-            안녕하세요,
-            <br />
-            원하시는 곡을
-            <br />
-            신청해 주시겠어요?
-          </span>
-        </TextContainer> */}
-        <Rectangle23 />
-      </Container>
+    <div className="ResponsiveBackground">
+      <EntranceSliding />
       <div className="Entrance">
         <RectangleBottom>
           <StartText>
@@ -62,7 +52,7 @@ const Home = () => {
           </StartText>
         </RectangleBottom>
       </div>
-    </Responsive>
+    </div>
   );
 };
 

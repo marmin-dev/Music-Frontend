@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Responsive } from "../components/Responsive";
-import Header from "../components/common/HeadBar";
+import StoryHeader from "../components/common/StoryHeadBar";
 import Navbar from "../components/common/Navbar";
 import { useParams } from "react-router-dom";
 import { getStoryDetail } from "../api/story";
@@ -45,7 +45,7 @@ const StoryDetail = () => {
   // -------------------------------------------
   return (
     <div className="ResponsiveBackground">
-      <Header content={`@${username}`} />
+      <StoryHeader content={`@${username}`} />
       <DetailBodyDiv>
         <StoryComment data={data} />
         <StoryPlayListDiv>

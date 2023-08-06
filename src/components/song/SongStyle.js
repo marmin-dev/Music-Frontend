@@ -35,16 +35,21 @@ export const SearchInput = styled.input`
   height: 30px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-left: 3%;
 `;
 
 export const SearchBtn = styled.button`
-  background-color: rgba(26, 227, 204, 1);
+  background-color: rgba(31, 28, 31, 0.9);
   width: 20%;
   border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
   &:hover {
     cursor: pointer;
+    background-color: rgba(129,216,207);
   }
 `;
 

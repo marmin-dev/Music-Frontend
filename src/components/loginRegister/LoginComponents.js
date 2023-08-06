@@ -28,7 +28,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: rgba(106, 224, 204);
+  background-color: rgba(31, 28, 31, 0.9);
   // background-image: linear-gradient(rgba(106, 224, 204), rgba(200, 224, 204, 0.5));
   width: 80%;
   border: none;
@@ -37,8 +37,11 @@ export const Button = styled.button`
   height: 5vh;
   margin-top: 5px;
   &:hover {
-    background-color: rgba(106, 224, 204);
+    background-color: rgba(129,216,207);
   }
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.85em;
+  color: white;
 `;
 
 export const RegisterLink = styled(Link)`

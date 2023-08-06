@@ -50,7 +50,7 @@ const StoreList = () => {
       {stores.map((store) => (
         <StoreListItem store={store} key={store.id} />
       ))}
-      <p>LAST ITEM</p>
+      {/* <p>LAST ITEM</p> */}
     </BodyDiv>
   );
 };
