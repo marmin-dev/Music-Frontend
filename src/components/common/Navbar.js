@@ -14,6 +14,7 @@ const NavDiv = styled.div`
   width: inherit;
   position: fixed;
   bottom: 0;
+  background-color: #fff;
   // border-top: 1px solid lightgray;
 
   box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.1);

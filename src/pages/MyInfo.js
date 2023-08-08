@@ -23,7 +23,7 @@ const BodyDiv = styled.div`
 `;
 
 const TextP = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 `;
 
@@ -53,9 +53,9 @@ function MyInfo() {
 
   return (
     <div className="ResponsiveBackground">
-      <Header content={"@" + username + "님의 취향"} />
+      <Header content={"@" + username + "님의 신청곡 분석"} />
       <BodyDiv>
-        <TextP>{username}님의 음악 취향을 분석해보았습니다</TextP>
+        <TextP>{username}님의 신청곡의 감정을 분석해보았습니다</TextP>
         <TextP>선호하는 음악 분위기는 {like}입니다</TextP>
         <RadarChart
           cx={200}

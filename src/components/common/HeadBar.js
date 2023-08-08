@@ -11,10 +11,10 @@ export const TopBar = styled.div`
   top: 0;
   width: inherit;
   position: fixed;
+  background-color: #fff;
   // border-bottom: 1px solid lightgray;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
 `;
-
 
 export const BackButton = styled.button`
   background-color: transparent;
@@ -56,4 +56,3 @@ export const Header = ({ content }) => {
 };
 
 export default Header;
-
