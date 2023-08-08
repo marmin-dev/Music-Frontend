@@ -57,7 +57,7 @@ const PostStore = () => {
   // }, [create, createError, dispatch]);
 
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"새 DJ부스 생성"} />
       <div style={{ height: "30px" }} />
       <StoreH2>새로운 DJ부스를 등록해볼까요?</StoreH2>
@@ -67,8 +67,8 @@ const PostStore = () => {
         onSubmit={onSubmit}
         error={error}
       />
-      <Navbar />
-    </Responsive>
+      <Navbar to={"/store/create"} />
+    </div>
   );
 };
 

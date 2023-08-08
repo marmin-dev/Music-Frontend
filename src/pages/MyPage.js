@@ -23,7 +23,7 @@ export const MyPage = () => {
   };
 
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <Header content={"마이페이지"} />
       <SBodyDiv>
         <ItemDiv>
@@ -47,7 +47,7 @@ export const MyPage = () => {
         </UserDeleteModal>
       ) : null}
       <Navbar to={"/store/create"} />
-    </Responsive>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ import { Button } from "../loginRegister/LoginComponents";
 function StoryResultPage({ form, onSubmit }) {
   const username = localStorage.getItem("username");
   const [emotion, setEmotion] = useState("");
-  const [loggedIn, setLoggedIn] = localStorage.getItem("SPOTIFY");
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("SPOTIFY"));
   const [img, setImg] = useState("");
   // -------------------------------------------------------
   useEffect(() => {

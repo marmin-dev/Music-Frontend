@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Responsive } from "../components/Responsive";
 import { BodyDiv } from "../components/common/Divs";
 import Navbar from "../components/common/Navbar";
 import { getStoreListByUser } from "../api/store";
-import StoreListItem from "../components/store/StoreListItem";
 import HeaderPlus from "../components/common/HeaderPlus";
+
+import StoreRefItem2 from "../components/store/StoreRefItem2";
 
 const MyDj = () => {
   const [items, setItems] = useState([]);
@@ -17,15 +17,15 @@ const MyDj = () => {
     fetchData();
   }, []);
   return (
-    <Responsive>
+    <div className="ResponsiveBackground">
       <HeaderPlus content={"내 DJ부스"} type={true} />
       <BodyDiv>
         {items.map((item) => (
-          <StoreListItem store={item} key={item.id} />
+          <StoreRefItem2 store={item} key={item.id} />
         ))}
       </BodyDiv>
       <Navbar to={"/store/create"} />
-    </Responsive>
+    </div>
   );
 };
 

@@ -7,14 +7,22 @@ import {
   CommentImage,
   CommentInput,
   CommentItemDiv,
-  StoryContentDiv,
+  StoryContentInner,
+  BtnContentInner,
+  CommentContentInner,
   StoryListDiv,
+  CommentDeleteImg,
 } from "./StoryStyle";
 import heart from "../../img/heart.png";
-import chat from "../../img/chat.png";
+import chat from "../../img/send.png";
 import { useEffect, useState } from "react";
-import { createComment, getCommentList } from "../../api/comment";
+import {
+  createComment,
+  deleteComment,
+  getCommentList,
+} from "../../api/comment";
 import { useParams } from "react-router-dom";
+import crossImg from "../../img/cross.png";
 
 const StoryComment = ({ data }) => {
   const [amount, setAmount] = useState(0);
@@ -22,7 +30,9 @@ const StoryComment = ({ data }) => {
   const storyId = useParams("id");
   const [create, setCreate] = useState(false);
   const userId = localStorage.getItem("userId");
+  const username = localStorage.getItem("username");
   const [content, setContent] = useState("");
+  // >>=======================================
 
   useEffect(() => {
     const fetch = async () => {
@@ -58,13 +68,24 @@ const StoryComment = ({ data }) => {
   const onChange = (e) => {
     setContent(e.target.value);
   };
-
+  // const deleteCom = async (id) => {
+  //   await deleteComment(id);
+  // };
+  // >>=======================================
   return (
-    <StoryListDiv>
-      <StoryContentDiv>{data.content}</StoryContentDiv>
+    // <StoryListDiv>
+    <div className="StoryListDiv">
+      <div className="StoryContentDiv">
+        <StoryContentInner>
+          {data.content}
+        </StoryContentInner>
+      </div>  
       <CommentBtnDiv>
         {/* <CommentImage src={heart} /> */}
-        <CommentImage src={chat} onClick={click} />
+        <BtnContentInner>
+          <CommentImage src={chat} onClick={click} />
+          <p style={{ paddingLeft: "10px", fontWeight: "bold", fontSize: "1em" }}>댓글 {amount}개</p>
+        </BtnContentInner>
       </CommentBtnDiv>
       {create ? (
         <CommentForm onSubmit={onSubmit}>
@@ -76,16 +97,26 @@ const StoryComment = ({ data }) => {
           <CommentBtn>댓글등록</CommentBtn>
         </CommentForm>
       ) : null}
-      <CommentADiv>
-        <p style={{ paddingLeft: "10px" }}>댓글 {amount}개</p>
-      </CommentADiv>
-      {comments.map((comment) => (
-        <CommentItemDiv key={comment.id}>
-          <CommentAuthor>{comment.username}</CommentAuthor>
-          {comment.content}
-        </CommentItemDiv>
-      ))}
-    </StoryListDiv>
+      {/* <CommentADiv>
+        
+      </CommentADiv> */}
+      <CommentContentInner>
+        {comments.map((comment) => (
+          <CommentItemDiv key={comment.id}>
+            <CommentAuthor>{comment.username}</CommentAuthor>
+            {comment.content}
+            {/* {username === comment.username ? (
+              <CommentDeleteImg
+                src={crossImg}
+                onClick={() => {
+                  deleteCom(comment.id);
+                }}
+              />
+            ) : null} */}
+          </CommentItemDiv>
+        ))}
+      </CommentContentInner>
+    </div>
   );
 };
 

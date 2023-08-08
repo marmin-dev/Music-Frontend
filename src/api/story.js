@@ -45,3 +45,13 @@ export const getRecommendSong = async ({ emotion }) => {
   console.log(response);
   return response.data;
 };
+
+export const getEmotion = async (story) => {
+  const response = await axios.post(
+    "https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/ai",
+    {
+      story,
+    }
+  );
+  return response.data[0];
+};

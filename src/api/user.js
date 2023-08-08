@@ -11,3 +11,11 @@ export const deleteUser = async () => {
   alert("탈퇴가 완료되었습니다.");
   window.location.href = "/";
 };
+
+export const getUserRef = async () => {
+  const id = localStorage.getItem("userId");
+  const res = await axios.get(
+    `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/user/ref/${id}`
+  );
+  return res.data;
+};

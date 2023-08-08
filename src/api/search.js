@@ -6,6 +6,7 @@ export const getSearch = async () => {
   const response = await axios.get(
     `https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/search/${id}`
   );
+  console.log(response);
   return response;
 };
 
@@ -16,6 +17,7 @@ export const getPathSearch = async (search) => {
     "https://3a489exprb.execute-api.ap-northeast-1.amazonaws.com/music-api/search",
     { search, userId }
   );
+  console.log(response);
   return response;
 };
 

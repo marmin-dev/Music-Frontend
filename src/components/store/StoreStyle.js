@@ -16,6 +16,10 @@ export const ItemDiv = styled.div`
   width:90%;
   margin-left: auto;
   margin-right: auto;
+  &:hover {
+    // background-color: rgba(129, 216, 207);
+    box-shadow: 0px 2.98256px 7.4564px 2.98256px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const ItemImg = styled.img`
@@ -24,6 +28,14 @@ export const ItemImg = styled.img`
   align-items: center;
   justify-content: center;
 `;
+
+export const ItemImgSpecial = styled.img`
+  width: 53%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 
 export const ImgDiv = styled.div`
   width: 30%;
@@ -37,6 +49,8 @@ export const ItemTextDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1em;
 `;
 
 export const ItemLink = styled(Link)`
@@ -64,4 +78,5 @@ export const SpotifyLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration-line: none;
 `;

@@ -178,8 +178,8 @@ const StoreDetail = () => {
     const newPlayList = optimizedSubset.map(
       (song) => `spotify:track:${song.uri}`
     );
-
-    setPlayList((prevPlayList) => prevPlayList.concat(newPlayList));
+    // console.log(newPlayList);
+    setPlayList(newPlayList);
   };
 
   // -----------------------------------------------------
@@ -193,7 +193,7 @@ const StoreDetail = () => {
           playList={playList}
           username={username}
         /> */}
-        <div style={{ height: "20px" }} />
+        <div style={{ height: "3px" }} />
         <StoryList stories={stories} loggedIn={token} />
         <SpotifyPlay
           id={id.id}
@@ -205,7 +205,9 @@ const StoreDetail = () => {
       {modal ? (
         <UserDeleteModal>
           <ModalBtn
-            onClick={() => (window.location.href = "http://localhost:8888")}
+            onClick={() =>
+              (window.location.href = "https://auth.sumsumai.click")
+            }
           >
             스포티파이 다시 로그인하기
           </ModalBtn>

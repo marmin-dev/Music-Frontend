@@ -7,6 +7,8 @@ import hamburger from "../../img/menu.png";
 
 const TitlePlus = styled(Title)`
   transform: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.3em;
 `;
 
 const HeaderPlus = ({ content, type, event }) => {
